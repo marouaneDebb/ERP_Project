@@ -1,6 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, setupIonicReact,IonRouterOutlet, IonFooter } from '@ionic/react';
-import Home from './components/home';
 import {
   IonContent,
 } from '@ionic/react';
@@ -23,10 +22,10 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import Homet from './components/homet';
-import NavBar from './components/navBar';
-import LogIn from './components/LogIn';
-import Account from './components/ActivateAccount';
+import Homet from './components/home/homet';
+import NavBar from './components/home/navBar';
+import LogIn from './components/login/LogIn';
+import Account from './components/login/ActivateAccount';
 import Footer from './components/footercom/Footer'
 import { IonReactRouter } from '@ionic/react-router';
 import SideMenu from './components/sidemenu/sidemenu';

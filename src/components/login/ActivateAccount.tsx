@@ -1,5 +1,4 @@
 import { IonButton, IonInput } from "@ionic/react";
-import "./homet.css";
 
 function Account() {
   return (
