@@ -29,22 +29,25 @@ import LogIn from './components/LogIn';
 import Account from './components/ActivateAccount';
 import Footer from './components/footercom/Footer'
 import { IonReactRouter } from '@ionic/react-router';
+import SideMenu from './components/sidemenu/sidemenu';
 setupIonicReact();
 
 function App(){
   return (
   <IonApp>
-          <NavBar/>
       <IonContent>
         <IonReactRouter>
             <IonRouterOutlet>
               <Route path="/" component={Homet} exact/>
               <Route path="/account" component={Account} exact/>
               <Route path="/logIn" component={LogIn} exact />
+              <Route path="/sidemenu" component={SideMenu} exact/>
             </IonRouterOutlet>
+            
         </IonReactRouter>
         
       </IonContent>
+      
   </IonApp>
 )}
 

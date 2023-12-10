@@ -9,7 +9,6 @@ import { IonFooter, IonImg } from '@ionic/react';
 const Footer: React.FC = () => {
   return (
     
-    <>
       <div className="footer">
         <div className="logo">
           <h2>SchoolLogo</h2>
@@ -57,7 +56,6 @@ const Footer: React.FC = () => {
           <p>@copyright {new Date().getFullYear()}</p>
         </div>
       </div>
-    </>
   );
 };
 
