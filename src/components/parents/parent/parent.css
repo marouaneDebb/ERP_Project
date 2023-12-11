@@ -1,0 +1,38 @@
+.row{
+    background-color: #C1BBEB;
+    width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.cart{
+    background-color: #ffffff;
+    margin-left: 10px;
+
+}
+.icons{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.icons svg{
+    padding-right: 10px;
+}
+.imageCart{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imageCart img{
+    height: 30%;
+    width: 30%;
+    border-radius: 50%;
+    border: 4px solid #c1bbeb;
+}
+.name{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
