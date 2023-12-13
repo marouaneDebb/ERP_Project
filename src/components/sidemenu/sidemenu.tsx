@@ -14,8 +14,13 @@ const SideMenu: React.FC = () => {
 
   const handleRowClick = (rowId: string) => {
     setActiveRow(rowId);
+<<<<<<< HEAD
     if (rowId === "row_11") {
         history.push("/sidemenu");
+=======
+    if (rowId === "row-11") {
+        history.push("/dashboard");
+>>>>>>> 559192e5ebb2f384a4bcdb398d8e355e7850003f
       }
       else if(rowId === "row_12"){
         history.push("/sidemenu")
@@ -43,8 +48,12 @@ const SideMenu: React.FC = () => {
     return isRowActive(rowId) ? "#4d44b5" : "#c1bbeb";
   };
   return (
+<<<<<<< HEAD
     <IonRow className="row_20 row">
       <IonCol className="col_1 col-2">
+=======
+      <IonCol className="col_1 col-lg-2">
+>>>>>>> 559192e5ebb2f384a4bcdb398d8e355e7850003f
         <IonRow className="image">
             <img src="https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?w=740&t=st=1702236437~exp=1702237037~hmac=44b4655423a2cb3bb4fa6f54d3828c164cc373a3d35fec1ad38416641b45421c" alt="logo" />
         </IonRow>
@@ -120,7 +129,6 @@ const SideMenu: React.FC = () => {
           <div className="title" style={{ color: getTitleColor("row_15") }}>User</div>
         </IonRow>
       </IonCol>
-    </IonRow>
   );
 };
 

@@ -1,0 +1,74 @@
+.Right{
+    overflow-y: auto;
+}
+.second_row, .third_row{
+    background-color: white;
+    margin-top:2%;
+    margin-bottom:2%;
+    padding:2%;
+}
+.Midl{
+    background-color: #F3F4FF;
+    padding-top: 2%;
+}
+.search{
+    border-radius:10px;
+    border: none;
+}
+div{
+    color:#303972;
+}
+img{
+    height:35px;
+    width: 35px;
+    border-radius: 50%;
+    border:solid grey 2px;
+}
+.photo{
+    border-radius:50%;
+}
+.row1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2%;
+    
+}
+.Add{
+    height: 70%;
+    width: 70%;
+    color:#4D44B5;
+}
+.Right, .unpaid_student{
+    margin-top: 2%;
+}
+#ID{
+    color:#4D44B5;
+}
+p{
+    line-height: 0.7;
+    font-size: 14px;
+
+}
+.btn{
+    border-radius:20px;
+    background-color:rgba(77, 68, 181, 0.10);;
+    color:#4D44B5;
+    width: 90%;
+    height: 40px;
+    justify-self: center;
+    margin-bottom:3%;
+}
+.infos{
+    padding-top:3%;
+}
+.subTitle{
+    color: #A098AE;
+    font-size: small;
+}
+h6{
+    font-size: large;
+}
+.recent_title{
+    margin-top:3%;
+}
