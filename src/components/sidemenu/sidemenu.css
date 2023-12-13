@@ -1,11 +1,11 @@
-.row-20{
+.row_20{
     width: 100vw;
   height: 100vh;
 }
-.row-11,
-.row-12,
-.row-14,
-.row-15,.row-13 {
+.row_11,
+.row_12,
+.row_14,
+.row_15,.row_13 {
   border-radius: 40px 0px 0px 40px;
   box-shadow: 0px 20px 50px 0px rgba(191, 21, 108, 0.05);
   align-self: stretch;
@@ -17,10 +17,10 @@
   transition: background-color 0.1s ease; /* Add transition for a smooth color change */
 }
 
-.row-11.active-row,
-.row-12.active-row,
-.row-14.active-row,
-.row-15.active-row,.row-13.active-row {
+.row_11.active-row,
+.row_12.active-row,
+.row_14.active-row,
+.row_15.active-row,.row_13.active-row {
   background-color: var(--active-color, #f3f4ff); /* Change to the desired active color */
 }
 
@@ -33,8 +33,8 @@
   margin: auto 0;
   font: 500 18px Poppins, sans-serif;
 }
-.col-1 {
-  width: 18%;
+.col_1 {
+  /* width: 18%; */
   padding-right: 0;
   background-color: var(--color-purple, #4d44b5);
 

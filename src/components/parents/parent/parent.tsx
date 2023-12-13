@@ -12,34 +12,17 @@ import "./parent.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { ellipsisHorizontal, ellipsisVertical } from "ionicons/icons";
-const Parent: React.FC = () => {
-  let items = [
-    {
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-  ];
+
+interface props {
+  items: Array<{
+    firstname: string;
+    lastname: string;
+    img: string;
+
+  }>;
+}
+
+const Parent: React.FC <props>= ({ items }) => {
 
   return (
     <div className="row">

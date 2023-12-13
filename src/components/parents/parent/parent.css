@@ -1,11 +1,11 @@
-.row{
+/* .row{
     background-color: #C1BBEB;
     width: 100vw;
   height: 100vh;
   justify-content: center;
   align-items: center;
   display: flex;
-}
+} */
 .cart{
     background-color: #ffffff;
     margin: 20px;
@@ -45,7 +45,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    margin-top: 5%;
+    margin-top: 10%;
     font: 700 16px Poppins, sans-serif;
     color: var(--color-text, #303972);
 

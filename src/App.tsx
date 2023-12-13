@@ -30,6 +30,7 @@ import Footer from './components/footercom/Footer'
 import { IonReactRouter } from '@ionic/react-router';
 import SideMenu from './components/sidemenu/sidemenu';
 import Parent from './components/parents/parent/parent';
+import Parents from './components/parents/parents';
 setupIonicReact();
 
 function App(){
@@ -43,6 +44,8 @@ function App(){
               <Route path="/logIn" component={LogIn} exact />
               <Route path="/sidemenu" component={SideMenu} exact/>
               <Route path="/parent" component={Parent} exact/>
+              <Route path="/parents" component={Parents} exact/>
+
 
             </IonRouterOutlet>
             
