@@ -26,13 +26,9 @@ import Homet from './components/home/homet';
 import LogIn from './components/login/LogIn';
 import Account from './components/login/ActivateAccount';
 import { IonReactRouter } from '@ionic/react-router';
-<<<<<<< HEAD
-import SideMenu from './components/sidemenu/sidemenu';
+import DashBoard from './components/dashboard/Dashboard';
 import Parent from './components/parents/parent/parent';
 import Parents from './components/parents/parents';
-=======
-import DashBoard from './components/dashboard/Dashboard';
->>>>>>> 559192e5ebb2f384a4bcdb398d8e355e7850003f
 setupIonicReact();
 
 function App(){
@@ -44,15 +40,9 @@ function App(){
               <Route path="/" component={Homet} exact/>
               <Route path="/account" component={Account} exact/>
               <Route path="/logIn" component={LogIn} exact />
-<<<<<<< HEAD
-              <Route path="/sidemenu" component={SideMenu} exact/>
+              <Route path="/dashBoard" component={DashBoard} exact/>
               <Route path="/parent" component={Parent} exact/>
               <Route path="/parents" component={Parents} exact/>
-
-
-=======
-              <Route path="/dashBoard" component={DashBoard} exact/>
->>>>>>> 559192e5ebb2f384a4bcdb398d8e355e7850003f
             </IonRouterOutlet>
             
         </IonReactRouter>
