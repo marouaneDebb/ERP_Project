@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './dashboard.css';
-import { IonCol, IonRow, IonIcon, IonButton,IonInput} from '@ionic/react';
+import { IonCol, IonRow, IonIcon, IonButton,IonInput, IonSearchbar} from '@ionic/react';
 import {search, addCircle} from 'ionicons/icons';
 import Notification_setting from '../notification_setting';
 import SideMenu from '../sidemenu/sidemenu';
@@ -35,9 +35,9 @@ function DashBoard(){
             <div className='Midl col-lg-7'>
                 <div className='container'>
                     <IonRow>
-                        <h3 className='col-lg-9'>Dashboard</h3>
-                        <div className='rounded col-lg-3'>
-                            <input type='text' placeholder='&#xf002; Search here' className='search'/>
+                        <h3 className='col-lg-4'>Dashboard</h3>
+                        <div className='search_place col-lg-8'>
+                        <IonSearchbar className="search_bar"></IonSearchbar>
                         </div>
                     </IonRow>
 

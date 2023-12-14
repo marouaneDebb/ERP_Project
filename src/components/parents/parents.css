@@ -1,0 +1,57 @@
+.parents_page{
+  background-color: #F3F4FF;
+    width: 100vw;
+  height: 100vh;
+  overflow-y: auto; 
+  display: flex;/* Add this line to enable vertical scrolling */
+
+}
+
+.parent_title{
+  margin-top: 2%;
+}
+.parent_title_text{
+  font: 36px Poppins, sans-serif;
+color: #4D44B5;
+}
+.search_bar{
+  width: 50%;
+  --icon-color:#4D44B5;
+  --placeholder-color:#A098AE;
+  --box-shadow: none;
+  --border-radius: 34px;
+}
+.options{
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-right: 3%;
+}
+
+.text_1{
+  font: 12px Poppins, sans-serif;
+  --background: #4D44B5;
+  --background-activated: #4D44B5;
+  --background-hover: #4D44B5;
+  --background-focused: #4D44B5;
+}
+.text_2{
+  font: 12px Poppins, sans-serif;
+  --background: #F3F4FF;
+  --border-width: 2px;
+  --border-color: #4D44B5;
+  --border-style: solid;
+  --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.15);
+  --color:#4D44B5;
+   /* --background-focused: #F3F4FF; */
+  
+}
+.svg_icon{
+  padding-left: 10px;
+}
+
+/* ion-searchbar{
+  --border-radius: 120px;
+  --background: #4D44B5;
+
+} */
