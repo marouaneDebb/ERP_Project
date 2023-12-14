@@ -21,10 +21,10 @@ const SideMenu: React.FC = () => {
         history.push("/sidemenu")
       }
       else if(rowId === "row_13"){
-        history.push("/sidemenu")
+        history.push("/parents")
       }
       else if(rowId === "row-14"){
-        history.push("/finance")
+        history.push("/sidemenu")
       }
       else if(rowId === "row_15"){
         history.push("/sidemenu")
