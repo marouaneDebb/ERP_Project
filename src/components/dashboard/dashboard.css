@@ -1,5 +1,5 @@
 .Right{
-    overflow-y: auto;
+    overflow-y:scroll;
 }
 .second_row, .third_row{
     background-color: white;
