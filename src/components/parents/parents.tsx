@@ -25,10 +25,59 @@ import {
 import SideMenu from "../sidemenu/sidemenu";
 import Parent from "./parent/parent";
 import "./parents.css";
+import Notification_setting from "../notification_setting";
 
 const Parents: React.FC = () => {
   let items = [
     {
+      firstname: "marouane",
+      lastname: "debbagh",
+      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
+    },
+    {
+      firstname: "marouane",
+      lastname: "debbagh",
+      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
+    },
+    {
+      firstname: "marouane",
+      lastname: "debbagh",
+      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
+    },
+    {
+      firstname: "marouane",
+      lastname: "debbagh",
+      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
+    },
+    {
+      firstname: "marouane",
+      lastname: "debbagh",
+      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
+    },{
+      firstname: "marouane",
+      lastname: "debbagh",
+      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
+    },
+    {
+      firstname: "marouane",
+      lastname: "debbagh",
+      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
+    },
+    {
+      firstname: "marouane",
+      lastname: "debbagh",
+      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
+    },
+    {
+      firstname: "marouane",
+      lastname: "debbagh",
+      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
+    },
+    {
+      firstname: "marouane",
+      lastname: "debbagh",
+      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
+    },{
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
@@ -58,10 +107,12 @@ const Parents: React.FC = () => {
   return (
     <div className="parents_page">
       <div className="row">
-          <SideMenu/>
-
+        <SideMenu />
         <div className="medSection col-10">
-          <div className="parent_title row"></div>
+          <div className="parent_title row">
+            <div className="parent_title_text col-9">Parents</div>
+            <div className="parent_title_left col-3"><Notification_setting /></div>
+          </div>
           <div className="parent_search row">
             <div className="seach col-6">
               <IonSearchbar className="search_bar"></IonSearchbar>

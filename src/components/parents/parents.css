@@ -2,6 +2,17 @@
   background-color: #F3F4FF;
     width: 100vw;
   height: 100vh;
+  overflow-y: auto; 
+  display: flex;/* Add this line to enable vertical scrolling */
+
+}
+
+.parent_title{
+  margin-top: 2%;
+}
+.parent_title_text{
+  font: 36px Poppins, sans-serif;
+color: #4D44B5;
 }
 .search_bar{
   width: 50%;
@@ -14,6 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: right;
+  padding-right: 3%;
 }
 
 .text_1{
