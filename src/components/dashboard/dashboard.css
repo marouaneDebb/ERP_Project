@@ -1,5 +1,10 @@
 .Right{
-    overflow-y: auto;
+    overflow-y:scroll;
+}
+.dashboard{
+    overflow: auto;
+    height: 100vh;
+
 }
 .second_row, .third_row{
     background-color: white;
@@ -50,6 +55,12 @@ p{
     font-size: 14px;
 
 }
+.search_place{
+    display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
 .btn{
     border-radius:20px;
     background-color:rgba(77, 68, 181, 0.10);;
@@ -71,4 +82,9 @@ h6{
 }
 .recent_title{
     margin-top:3%;
+}
+.pageBtn{
+    height: 6opx;
+    width:60px;
+    border-radius: 50%;
 }

@@ -108,6 +108,7 @@ const Parents: React.FC = () => {
     <div className="parents_page">
       <div className="row">
         <SideMenu />
+        
         <div className="medSection col-10">
           <div className="parent_title row">
             <div className="parent_title_text col-9">Parents</div>

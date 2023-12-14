@@ -27,7 +27,7 @@ import LogIn from './components/login/LogIn';
 import Account from './components/login/ActivateAccount';
 import { IonReactRouter } from '@ionic/react-router';
 import DashBoard from './components/dashboard/Dashboard';
-import Parent from './components/parents/parent/parent';
+import Finance from './components/finance/finance';
 import Parents from './components/parents/parents';
 setupIonicReact();
 
@@ -41,8 +41,10 @@ function App(){
               <Route path="/account" component={Account} exact/>
               <Route path="/logIn" component={LogIn} exact />
               <Route path="/dashBoard" component={DashBoard} exact/>
-              <Route path="/parent" component={Parent} exact/>
+              <Route path="/finance" component={Finance} exact/>
               <Route path="/parents" component={Parents} exact/>
+
+
             </IonRouterOutlet>
             
         </IonReactRouter>

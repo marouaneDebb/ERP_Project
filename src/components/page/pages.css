@@ -1,0 +1,19 @@
+.pageBtn{
+    height: 30px;
+    width: 30px;
+    border-radius:50%;
+    color: #4D44B5;
+    border: solid 1px grey;
+    margin-inline:1.66%;
+}
+.paging{
+    justify-content: right;
+}
+.pageSpan{
+    text-align: center;
+    height: 32px;
+    width: 32px;
+    color:white;
+    border-radius: 50%;
+    background-color: #4D44B5;
+}
