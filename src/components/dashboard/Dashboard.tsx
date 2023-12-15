@@ -6,6 +6,7 @@ import {search, addCircle} from 'ionicons/icons';
 import Notification_setting from '../notification_setting';
 import SideMenu from '../sidemenu/sidemenu';
 import ListWithPagination from '../page/pages';
+import ListComponent from './ListComponent';
 
 interface Student {
     firstName: string;
@@ -94,7 +95,13 @@ function DashBoard(){
                     
                     <div className='third_row rounded'>
                         <h5>Unpaid Student Intuition</h5>
-                        <ListWithPagination itemsPerPage={3} data={studentData} />
+                        <ListWithPagination<Student>
+                            itemsPerPage={3}
+                            data={studentData}
+                            renderListItem={(student1) => (
+                                <ListComponent key={student1.id} data={student1} />
+                            )}
+                            />
                     </div>
                 </div>
             </div>
