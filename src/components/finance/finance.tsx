@@ -24,7 +24,9 @@ interface Expense {
   }
 
 function Finance(){
-
+    let percentParent=-0.2;
+    let percentStudent=2;
+    let percentExpense=13;
     const studentData: Student[] = [{firstName:'youssef',lastName:'oudourouch',id:22301035,class:'2A',sold:58},
     {firstName:'younss',lastName:'JAMALDDIN',id:2230102,class:'2A',sold:654},
     {firstName:'ali',lastName:'LHRCHI',id:223010244,class:'2A',sold:959},
@@ -35,17 +37,22 @@ function Finance(){
     ];
 
     const expenseData: Expense[]=[{id:7372282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Pending"},
-    {id:7393282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Pending"},
+    {id:7393282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Canceled"},
     {id:4372282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Pending"},
-    {id:7002282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Pending"},
-    {id:73744282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Pending"}];
+    {id:7002282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Complete"},
+    {id:73744282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Complete"}];
+
+    const getColor = (value:number) => {
+        return value > 0 ? 'green' : 'red';
+      };
+
     return(
         <div className="finance_bg">
             <IonRow>
                 <SideMenu/>
                 <IonCol className="container">
                     <IonRow className="finance_head ">
-                        <IonCol> Finance</IonCol>
+                        <IonCol><h3>Finance</h3></IonCol>
                         <IonCol><IonSearchbar className="search_bar"></IonSearchbar></IonCol>
                         <IonCol className='col-3'><Notification_setting/></IonCol>
                     </IonRow>
@@ -66,7 +73,7 @@ function Finance(){
                             <IonCol>
                                 <p className="subTitle">Total students</p>
                                 <h4>890</h4>
-                                <p className="subTitle">than last month</p>
+                                <p className="subTitle"><span style={{ color: getColor(percentStudent) }}>{percentStudent}%</span> than last month</p>
                             </IonCol>
                         </IonRow>
                         <IonRow className="Elements col-3">
@@ -85,7 +92,7 @@ function Finance(){
                             <IonCol>
                                 <p className="subTitle">Total Parents</p>
                                 <h4>345</h4>
-                                <p className="subTitle">than last month</p>
+                                <p className="subTitle"><span style={{ color: getColor(percentParent) }}>{percentParent}%</span> than last month</p>
 
                             </IonCol>
                         </IonRow>
@@ -105,8 +112,8 @@ function Finance(){
 
                             <IonCol>
                                 <p className="subTitle">School balance</p>
-                                <h4>12</h4>
-                                <p className="subTitle">than last month</p>
+                                <h4>$1245.650</h4>
+                                <p className="subTitle"><span style={{ color: getColor(percentExpense) }}>{percentExpense}%</span> than last month</p>
                             </IonCol>
                             <svg width="174" height="68" viewBox="0 0 174 68" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M30.2852 25.7289C17.6011 26.875 12.5348 45.2014 2 45.2014V68H17.9882H171.983L172 21.3644C161.342 24.7809 154.585 -0.190208 143.715 2.15584C131.764 4.73524 129.74 33.7865 115.43 33.7865C104.157 33.7865 98.2906 22.7554 87.1443 24.7217C74.0672 27.0286 71.7426 56.8038 58.5705 58.1989C46.963 59.4282 41.9057 24.6789 30.2852 25.7289Z" fill="url(#paint0_linear_457_1933)" fill-opacity="0.25"/>
@@ -120,21 +127,21 @@ function Finance(){
                             </svg>
                         </IonRow>
                     </IonRow>
-                    <IonRow className="raw">
+                    <IonRow className="container">
                         <div className='third_row rounded col-7'>
                             <h5>Unpaid Student Intuition</h5>
                             <ListWithPagination<Student>
-                                itemsPerPage={3}
+                                itemsPerPage={4}
                                 data={studentData}
                                 renderListItem={(student1) => (
                                     <ListComponent key={student1.id} data={student1} />
                                 )}
                                 />
                         </div>
-                        <IonCol className='third_row rounded mx-2 col-4'>
+                        <IonCol className='third_row third_rw2 rounded'>
                             <h5>School Expense</h5>
                             <ListWithPagination<Expense>
-                            itemsPerPage={3}
+                            itemsPerPage={4}
                             data={expenseData}
                             renderListItem={(expense) => (
                                 <ShowExpense key={expense.id} item={expense} />
