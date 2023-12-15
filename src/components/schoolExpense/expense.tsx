@@ -13,9 +13,18 @@ import { IonCol, IonRow} from '@ionic/react';
   }
   
   const showExpense: React.FC<showExpenseProps> = ({item}) => {
+    const getColor = (value:string) => {
+        if(value ==="Complete"){
+            return 'green';
+        }
+        else if(value==="Canceled"){
+            return 'red';
+        }
+        else return 'grey';
+      };
 
     return(
-        <IonRow >
+        <IonRow className='mt-3'>
             <IonCol className='col-2'>
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="40" height="40" rx="20" fill="#FF4550"/>
@@ -29,12 +38,12 @@ import { IonCol, IonRow} from '@ionic/react';
                     </defs>
                 </svg>
             </IonCol>
-            <IonCol>
-                <IonRow>{item.id}</IonRow>
-                <IonRow className='subTitle'>{item.date} {item.timing}</IonRow>
+            <IonCol className='col-5'>
+                <IonRow>#{item.id}</IonRow>
+                <IonRow className='subTitle'>{item.date}  |{item.timing}</IonRow>
             </IonCol>
-            <IonCol>$ {item.sold}</IonCol>
-            <IonCol className='subTitle'>{item.status}</IonCol>
+            <IonCol className='col-3'>$ {item.sold}</IonCol>
+            <IonCol className='subTitle col-2' style={{ color: getColor(item.status) }}>{item.status}</IonCol>
 
         </IonRow>
 )};
