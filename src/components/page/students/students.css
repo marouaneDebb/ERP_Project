@@ -1,0 +1,116 @@
+body {
+  background-color: #F3F4FF; /* Remplacez cette valeur par la couleur de fond souhaitée */
+  /* margin: 0; //Réinitialise la marge du corps pour éviter un espace supplémentaire */
+  /* padding: 0; Réinitialise le rembourrage du corps pour éviter un espace supplémentaire */
+  /* bottom: 3%; */
+  /* overflow: visible; */
+  /* width: 92%; */
+  margin: 0;
+  padding: 0;
+
+}
+
+ion-chip {
+  --background: #ce6713;
+  --color: #adefd1;
+}
+.tout {
+  overflow: auto;
+    /* margin: 30px; */
+   /* position: relative; */
+   /* width: 90vw; */
+    left: 4%;
+    /* bottom: 40%; */
+    /* max-width: 1000px; */
+
+}
+.head {
+  position: relative;
+  height: 20%;
+}
+h1{
+  position:relative;
+  width: 23%;
+  top: 19%;
+    color: rgb(12, 12, 110);
+    font-weight: bold;
+    font-size:3vw
+}
+
+.head2 {
+  position: relative;
+  top: 5%;
+}
+.searchbar {
+  position: relative;
+  /* top: 60px; */
+  width:20%;
+  border-top-left-radius: 20px;
+  border-color: red;
+  --border-radius: 34px;
+}
+
+.main {
+  position: relative;
+  top: 8%;
+    /* border-top-left-radius: 200px; */
+    background-color: #ffffff;
+    /* bottom: 23px; */
+    border-color: red;
+    
+    
+}
+
+  
+  .button {
+    margin: 0 5px;
+    /* width: 0px; */
+    height: 30px;
+    border-radius: 49%;
+    --border-radius: 34px;
+    
+  
+  }
+  
+
+
+  .row2 {
+    /* position: sticky; */
+    /* right: 0; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* margin-top: 2%; */
+    /* width: 40%; */
+    /* right: 0px; */
+    border-bottom:1px solid #ccc;
+    border-right:1px solid #ccc;
+    border-left:1px solid #ccc;
+  }
+  .buttonsbas {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    
+  }
+
+  .table-header{
+    background-color: #f8f8fa;
+    color: #151515;
+    font-weight: bold;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    height: 60px;
+    font-weight: 5px;
+    padding: 15px;
+  }
+
+  .table-cell {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-bottom: #ffffff;
+}
+
+
+
+

@@ -25,6 +25,7 @@ const Homet: React.FC = () => {
         <IonFooter>
           <Footer />
         </IonFooter>
+        
       </IonGrid>
     </IonApp>
   );
