@@ -24,7 +24,7 @@ function NavBar(){
                   <a className="nav-link " href="#">About Us</a>
                 </li>
                 <li className="nav-item col-4">
-                  <a className="nav-link" href="/logIn"><IonButton className='B'>Register</IonButton></a>
+                  <a className="nav-link" href="/ERP_Project/logIn"><IonButton className='B'>Register</IonButton></a>
                   
                 </li>
               </ul>
