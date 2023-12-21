@@ -37,12 +37,12 @@ function App(){
       <IonContent>
         <IonReactRouter>
             <IonRouterOutlet>
-              <Route path="/" component={Homet} exact/>
-              <Route path="/account" component={Account} exact/>
-              <Route path="/logIn" component={LogIn} exact />
-              <Route path="/dashBoard" component={DashBoard} exact/>
-              <Route path="/finance" component={Finance} exact/>
-              <Route path="/parents" component={Parents} exact/>
+              <Route path="/ERP_Project/" component={Homet} exact/>
+              <Route path="/ERP_Project/account" component={Account} exact/>
+              <Route path="/ERP_Project/logIn" component={LogIn} exact />
+              <Route path="/ERP_Project/dashBoard" component={DashBoard} exact/>
+              <Route path="/ERP_Project/finance" component={Finance} exact/>
+              <Route path="/ERP_Project/parents" component={Parents} exact/>
 
 
             </IonRouterOutlet>
