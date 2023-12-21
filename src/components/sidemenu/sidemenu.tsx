@@ -15,19 +15,19 @@ const SideMenu: React.FC = () => {
   const handleRowClick = (rowId: string) => {
     setActiveRow(rowId);
     if (rowId === "row_11") {
-        history.push("/ERP_Project/dashboard");
+        history.push("/dashboard");
       }
       else if(rowId === "row_12"){
-        history.push("/ERP_Project/sidemenu")
+        history.push("/sidemenu")
       }
       else if(rowId === "row_13"){
-        history.push("/ERP_Project/parents")
+        history.push("/parents")
       }
       else if(rowId === "row_14"){
-        history.push("/ERP_Project/finance")
+        history.push("/finance")
       }
       else if(rowId === "row_15"){
-        history.push("/ERP_Project/sidemenu")
+        history.push("/sidemenu")
       }
   };
 
