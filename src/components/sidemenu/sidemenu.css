@@ -5,7 +5,7 @@ height: 100vh;
 .row_11,
 .row_12,
 .row_14,
-.row_15,.row_13 {
+.row_15,.row_13,.row_16 {
 border-radius: 40px 0px 0px 40px;
 box-shadow: 0px 20px 50px 0px rgba(191, 21, 108, 0.05);
 align-self: stretch;
@@ -21,7 +21,7 @@ transition: background-color 0.1s ease; /* Add transition for a smooth color cha
 .row_11.active-row,
 .row_12.active-row,
 .row_14.active-row,
-.row_15.active-row,.row_13.active-row {
+.row_15.active-row,.row_13.active-row,.row_16.active-row {
 background-color: var(--active-color, #f3f4ff); /* Change to the desired active color */
 }
 

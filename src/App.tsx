@@ -29,6 +29,8 @@ import { IonReactRouter } from '@ionic/react-router';
 import DashBoard from './components/dashboard/Dashboard';
 import Finance from './components/finance/finance';
 import Parents from './components/parents/parents';
+import Service from './components/service/service';
+import ServiceItem from './components/service/ServiceItems/serviceItem';
 setupIonicReact();
 
 function App(){
@@ -43,6 +45,8 @@ function App(){
               <Route path="/ERP_Project/dashBoard" component={DashBoard} exact/>
               <Route path="/ERP_Project/finance" component={Finance} exact/>
               <Route path="/ERP_Project/parents" component={Parents} exact/>
+              <Route path="/ERP_Project/service" component={Service} exact/>
+              <Route path="/ERP_Project/service1" component={ServiceItem} exact/>
 
 
             </IonRouterOutlet>
