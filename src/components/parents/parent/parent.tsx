@@ -7,6 +7,7 @@ import {
   IonIcon,
   IonImg,
   IonRow,
+  
 } from "@ionic/react";
 import "./parent.css";
 import "bootstrap/dist/css/bootstrap.min.css";
