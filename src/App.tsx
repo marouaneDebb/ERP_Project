@@ -30,6 +30,13 @@ import DashBoard from './components/dashboard/Dashboard';
 import Finance from './components/finance/finance';
 import Parents from './components/parents/parents';
 import Students_Page from './components/page/students/Students_Page';
+
+import Student_Ex from './components/page/students/TableStructure';
+import New_Student from './components/page/students/TableData';
+import Student from './components/page/students/TableStructure';
+import TableStructure from './components/page/students/TableStructure';
+import HStudent from './components/page/students/Students';
+import Students from './components/page/students/Students';
 setupIonicReact();
 
 function App(){
@@ -39,7 +46,7 @@ function App(){
         <IonReactRouter>
             <IonRouterOutlet>
               <Route path="/" component={Homet} exact/>
-              <Route path="/students" component={Students_Page} exact/>
+              <Route path="/students" component={Students} exact/>
               <Route path="/account" component={Account} exact/>
               <Route path="/logIn" component={LogIn} exact />
               <Route path="/dashBoard" component={DashBoard} exact/>

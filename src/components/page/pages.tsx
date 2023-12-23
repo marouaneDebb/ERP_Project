@@ -10,6 +10,8 @@ interface ListWithPaginationProps<T> {
 }
 
 const ListWithPagination = <T,>({ itemsPerPage, data, renderListItem }: ListWithPaginationProps<T>) => {
+
+  
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
