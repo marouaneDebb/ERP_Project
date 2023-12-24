@@ -35,7 +35,7 @@
     align-items: center;
     justify-content: center;
 }
-.imageCart img{
+.parent_img{
     height: 35%;
     width: 35%;
     border-radius: 50%;

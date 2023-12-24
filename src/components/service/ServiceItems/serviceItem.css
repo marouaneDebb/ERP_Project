@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+.service_item{
+    background-color: white;
+}
+.service_imageCart{
+    display: flex;
+    justify-content: center;
+    align-items: top;
+}
+.service_imageCart img{
+    height: 70%;
+  width: auto;
+  border-radius: 10%;
+  border: none;
+}
+.option{
+    font: 10px Poppins, sans-serif;
+    --background: #4D44B5;
+    --background-activated: #4D44B5;
+    --background-hover: #4D44B5;
+    --background-focused: #4D44B5;
+    width: 50%;
+  }
+.service_title{
+    font: 20px Poppins, sans-serif;
+    font-weight: bold;
+    color: #303972;
+    padding-top: 2%;
+
+}
+.icon {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.big_number{
+    font: 20px Poppins, sans-serif;
+    font-weight: 900;
+    color: #303972;
+    margin-bottom: 6%;
+    padding-top: 2%;
+}
+.lighter_text{
+    font: 17px Poppins, sans-serif;
+    font-weight: lighter;
+    color: #98989a;
+}
+.more{
+    font: 40px Poppins, sans-serif;
+    font-weight: lighter;
+    color: #98989a;
+}
+.service_more{
+    display: flex;
+    justify-content: flex-end;
+}

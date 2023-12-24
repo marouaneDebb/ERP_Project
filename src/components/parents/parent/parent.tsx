@@ -43,7 +43,7 @@ const Parent: React.FC <props>= ({ items }) => {
             </svg>
           </div>
           <div className="imageCart">
-            <img src={item.img} alt=".." />
+            <img className="parent_img" src={item.img} alt=".." />
           </div>
           <div className="name">
             <p>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 .service_page{
     background-color: #F3F4FF;
       width: 100vw;
@@ -11,6 +13,7 @@
   .service_title_text{
     font: 36px Poppins, sans-serif;
   color: #4D44B5;
+  font-weight: 700;
   }
 .Service_seach{
     position: relative;
@@ -31,6 +34,7 @@
   }
   .service_container{
     background-color: #ffffff;
+    padding-bottom: 2%;
 
 
   }
@@ -57,8 +61,13 @@
   .container_title{
     padding: 1%;
     font: 18px Poppins, sans-serif;
-    font-weight: bold;
+    font-weight: 800;
     color: #303972;
 
 
+  }
+  .addService{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
   }

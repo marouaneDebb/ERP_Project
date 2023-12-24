@@ -25,9 +25,36 @@ import {
 import SideMenu from "../sidemenu/sidemenu";
 import "./service.css";
 import Notification_setting from "../notification_setting";
+import ServiceItem from "./ServiceItems/serviceItem";
 
 const Service: React.FC = () => {
-  let items = [];
+  let items = [
+    {
+      img: "https://img.freepik.com/free-photo/front-view-smiley-people-holding-rackets_23-2149733032.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396",
+      name: "Library",
+      TotalOrders: "1.456",
+      intrest: "26",
+    },
+    {
+      img: "https://img.freepik.com/free-photo/front-view-smiley-people-holding-rackets_23-2149733032.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396",
+      name: "Library",
+      TotalOrders: "1.456",
+      intrest: "26",
+    },
+    {
+      img: "https://img.freepik.com/free-photo/front-view-smiley-people-holding-rackets_23-2149733032.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396",
+      name: "Library",
+      TotalOrders: "1.456",
+      intrest: "26",
+    },
+    {
+      img: "https://img.freepik.com/free-photo/front-view-smiley-people-holding-rackets_23-2149733032.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396",
+      name: "Library",
+      TotalOrders: "1.456",
+      intrest: "26",
+    },
+  ];
+
   const [selectedOption, setSelectedOption] = useState("defult");
   const [selectedOption1, setSelectedOption1] = useState("");
 
@@ -57,7 +84,7 @@ const Service: React.FC = () => {
   return (
     <div className="service_page">
       <div className="row">
-        <SideMenu />
+        <SideMenu active_Row={"row_15"}/>
         <div className="ServiceMidsection col-10">
           <div className="service_title row">
             <div className="service_title_text col-3">Services</div>
@@ -68,6 +95,13 @@ const Service: React.FC = () => {
               <Notification_setting />
             </div>
           </div>
+          <div className="addService">
+            <IonButton shape="round" className="text_1">
+              <IonIcon slot="start" icon={add}></IonIcon>
+              add parent
+            </IonButton>
+          </div>
+
           <div className="service_content row">
             <div className="service_container row">
               <div className="container_title col-9">service Menu</div>
@@ -80,15 +114,24 @@ const Service: React.FC = () => {
                   >
                     All services
                   </div>
-                  <div className="service_options col-4" id={selectedOption1} onClick={handleClick1}>
+                  <div
+                    className="service_options col-4"
+                    id={selectedOption1}
+                    onClick={handleClick1}
+                  >
                     Optional
                   </div>
-                  <div className="service_options col-4" id={selectedOption2} onClick={handleClick2}>
+                  <div
+                    className="service_options col-4"
+                    id={selectedOption2}
+                    onClick={handleClick2}
+                  >
                     Obligatory
                   </div>
                 </div>
               </div>
             </div>
+            <ServiceItem items={items} />
           </div>
         </div>
       </div>

@@ -49,7 +49,7 @@ function Finance(){
     return(
         <div className="finance_bg">
             <IonRow>
-                <SideMenu/>
+                <SideMenu active_Row={"row_14"}/>
                 <IonCol className="container">
                     <IonRow className="finance_head ">
                         <IonCol><h3>Finance</h3></IonCol>

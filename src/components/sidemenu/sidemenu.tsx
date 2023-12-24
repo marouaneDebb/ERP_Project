@@ -7,8 +7,13 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./sidemenu.css";
 import { useHistory } from "react-router-dom";
 
-const SideMenu: React.FC = () => {
-  const [activeRow, setActiveRow] = useState<string | null>(null);
+
+interface props {
+    active_Row: string;
+}
+
+const SideMenu: React.FC <props>= ({ active_Row }) => {
+  const [activeRow, setActiveRow] = useState<string | null>(active_Row);
   const history = useHistory();
 
   const handleRowClick = (rowId: string) => {
@@ -43,7 +48,7 @@ const SideMenu: React.FC = () => {
   return (
     <IonCol className="col_1 col-lg-2">
       <IonRow className="image">
-        <img
+        <img className="sidemenu_img"
           src="https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?w=740&t=st=1702236437~exp=1702237037~hmac=44b4655423a2cb3bb4fa6f54d3828c164cc373a3d35fec1ad38416641b45421c"
           alt="logo"
         />

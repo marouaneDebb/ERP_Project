@@ -107,7 +107,7 @@ const Parents: React.FC = () => {
   return (
     <div className="parents_page">
       <div className="row">
-        <SideMenu />
+        <SideMenu active_Row={"row_13"}/>
         
         <div className="medSection col-10">
           <div className="parent_title row">

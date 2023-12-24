@@ -1,9 +1,7 @@
 .parents_page{
   background-color: #F3F4FF;
-    width: 100vw;
   height: 100vh;
-  overflow-y: auto; 
-  display: flex;/* Add this line to enable vertical scrolling */
+  overflow: auto;
 
 }
 

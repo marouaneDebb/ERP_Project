@@ -31,6 +31,8 @@ import Finance from './components/finance/finance';
 import Parents from './components/parents/parents';
 import Service from './components/service/service';
 import ServiceItem from './components/service/ServiceItems/serviceItem';
+import Login from './components/login/loginV2';
+import SignUp from './components/login/signUp';
 setupIonicReact();
 
 function App(){
@@ -40,8 +42,8 @@ function App(){
         <IonReactRouter>
             <IonRouterOutlet>
               <Route path="/ERP_Project/" component={Homet} exact/>
-              <Route path="/ERP_Project/account" component={Account} exact/>
-              <Route path="/ERP_Project/logIn" component={LogIn} exact />
+              <Route path="/ERP_Project/signup" component={SignUp} exact/>
+              <Route path="/ERP_Project/logIn" component={Login} exact />
               <Route path="/ERP_Project/dashBoard" component={DashBoard} exact/>
               <Route path="/ERP_Project/finance" component={Finance} exact/>
               <Route path="/ERP_Project/parents" component={Parents} exact/>
