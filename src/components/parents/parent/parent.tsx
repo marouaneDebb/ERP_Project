@@ -3,9 +3,6 @@ import {
   IonApp,
   IonButton,
   IonCol,
-  IonGrid,
-  IonIcon,
-  IonImg,
   IonRow,
 } from "@ionic/react";
 import "./parent.css";
@@ -13,20 +10,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { ellipsisHorizontal, ellipsisVertical } from "ionicons/icons";
 
-interface props {
-  items: Array<{
+interface Parent{
+    id:number;
     firstname: string;
     lastname: string;
     img: string;
-
-  }>;
+}
+interface props {
+  item: Parent;
 }
 
-const Parent: React.FC <props>= ({ items }) => {
+const Parent: React.FC <props>= ({ item }) => {
 
   return (
-    <div className="row">
-      {items.map((item, index) => (
+      
         <div className="cart col-lg-2 col-md-4 col-sm-6">
           <div className="horizontal">
             <svg
@@ -81,8 +78,7 @@ const Parent: React.FC <props>= ({ items }) => {
             </IonCol>
           </IonRow>
         </div>
-      ))}
-    </div>
+   
   );
 };
 
