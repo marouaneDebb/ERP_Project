@@ -25,6 +25,7 @@ const ListWithPagination = <T,>({ itemsPerPage, data, renderListItem }: ListWith
   return (
     <div>
       {currentItems.map((item, index) => (
+        
         <div key={index}>{renderListItem(item)}</div>
       ))}
       <IonRow className="paging">

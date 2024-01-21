@@ -12,92 +12,100 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import {
-  add,
-  addCircle,
-  arrowDown,
-  arrowDownCircle,
-  arrowDownCircleOutline,
-  arrowDownOutline,
-  ellipsisHorizontal,
-  ellipsisVertical,
-  star,
+  add
 } from "ionicons/icons";
 import SideMenu from "../sidemenu/sidemenu";
 import Parent from "./parent/parent";
 import "./parents.css";
 import Notification_setting from "../notification_setting";
+import ListWithPagination from "../page/pages";
 
 const Parents: React.FC = () => {
   let items = [
     {
+      id:1,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
     {
+      id:2,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
     {
+      id:3,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
     {
+      id:4,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
     {
+      id:5,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },{
+      id:6,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
     {
+      id:7,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
     {
+      id:8,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
     {
+      id:9,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
     {
+      id:10,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },{
+      id:11,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
     {
+      id:12,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
     {
+      id:13,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
     {
+      id:14,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
     {
+      id:15,
       firstname: "marouane",
       lastname: "debbagh",
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
