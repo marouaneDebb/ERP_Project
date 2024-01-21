@@ -1,7 +1,7 @@
 .parents_page{
   background-color: #F3F4FF;
+  width: 100%; /* Optionally, set the width to 100% or a specific value */
   height: 100vh;
-  overflow: auto;
 
 }
 
@@ -53,3 +53,9 @@ color: #4D44B5;
   --background: #4D44B5;
 
 } */
+
+.parent-container {
+  max-height: 56%; /* Set a maximum height for the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden;
+}

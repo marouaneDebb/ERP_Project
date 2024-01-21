@@ -141,7 +141,10 @@ const Parents: React.FC = () => {
               </IonButton>
             </div>
           </div>
+          <div className="parent-container">
           <Parent items={items} />
+
+          </div>
         </div>
       </div>
     </div>

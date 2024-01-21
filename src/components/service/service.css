@@ -4,7 +4,8 @@
     background-color: #F3F4FF;
       width: 100vw;
     height: 100vh;
-    overflow-y: auto; 
+    padding-right: 4%;
+  
   
   }
   .service_title{
@@ -70,4 +71,9 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+  }
+  .service_content {
+    max-height: 56%; /* Set a maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
   }
