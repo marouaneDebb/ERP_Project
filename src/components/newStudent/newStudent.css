@@ -1,0 +1,33 @@
+.formulaire{
+    background-color: white;
+    border-radius: 20px;
+    margin-right: 1.2%;
+}
+.formulaire .newAccount{
+    background-color: #4D44B5;
+    border-radius: 20px 20px 0px 0px;
+    height:40px;
+}
+.formulaire .newAccount h5{
+    color:white;
+    padding-left: 2%;
+    padding-top:10px;
+}
+.midle1{
+    background-color: #F3F4FF;
+}
+.photo1{
+   
+
+    background-color: #ffffff;
+    border: 1px dashed;
+    border-color: #c1bbeb;
+    border-radius: 5px;
+    height: 175px;
+    width: 175px;
+}
+.mainf{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 1%;
+}
