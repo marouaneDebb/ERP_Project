@@ -1,31 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import {
-  IonApp,
   IonButton,
-  IonCol,
-  IonGrid,
   IonIcon,
-  IonImg,
-  IonRow,
   IonSearchbar,
 } from "@ionic/react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import {
   add,
-  addCircle,
-  arrowDown,
-  arrowDownCircle,
-  arrowDownCircleOutline,
-  arrowDownOutline,
-  ellipsisHorizontal,
-  ellipsisVertical,
-  star,
+  caretBack,
 } from "ionicons/icons";
 import SideMenu from "../sidemenu/sidemenu";
 import "./service.css";
 import Notification_setting from "../notification_setting";
 import ServiceItem from "./ServiceItems/serviceItem";
+import NewService from "./NewService";
 
 const Service: React.FC = () => {
   let items = [
@@ -59,6 +48,7 @@ const Service: React.FC = () => {
   const [selectedOption1, setSelectedOption1] = useState("");
 
   const [selectedOption2, setSelectedOption2] = useState("");
+  const[state, setState]=useState(true);
 
   const handleClick = () => {
     setSelectedOption("defult");
@@ -80,6 +70,9 @@ const Service: React.FC = () => {
 
     console.log("Text clicked!");
   };
+  const newService=()=>{
+    setState(!state);
+  }
 
   return (
     <div className="service_page">
@@ -96,13 +89,18 @@ const Service: React.FC = () => {
             </div>
           </div>
           <div className="addService">
-            <IonButton shape="round" className="text_1">
+            {state?
+            <IonButton shape="round" className="text_1" onClick={newService}>
               <IonIcon slot="start" icon={add}></IonIcon>
-              add parent
-            </IonButton>
+              add service
+            </IonButton>:
+            <IonButton shape="round" className="text_1" onClick={newService}>
+              <IonIcon slot="start" icon={caretBack}></IonIcon>
+              back
+            </IonButton>}
           </div>
-
-          <div className="service_content row">
+          {state?
+          (<div className="service_content row">
             <div className="service_container row">
               <div className="container_title col-9">service Menu</div>
               <div className="container_menu col-3">
@@ -131,8 +129,8 @@ const Service: React.FC = () => {
                 </div>
               </div>
             </div>
-            <ServiceItem items={items} />
-          </div>
+              <ServiceItem items={items} />
+          </div>):<NewService/>}
         </div>
       </div>
     </div>

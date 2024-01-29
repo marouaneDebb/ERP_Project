@@ -2,13 +2,19 @@ import {IonInput,IonRow, IonLabel, IonSearchbar, IonTextarea, IonText, IonAlert,
 import { add } from "ionicons/icons";
 import { useState } from "react";
 import './NewService.css'
+import NewDiscount from "../Discount/newDiscount";
 
 
 function NewService(){
     const [selectedOption, setSelectedOption] = useState<string | undefined>(undefined);
+    const[discount, setDiscount]=useState(false);
+
+    const newDiscount=()=>{
+        setDiscount(!discount);
+      }
     return(    
-    
-    <div className="formulaire">
+    <div className="formsDis">
+    <div className="formulaire m-4">
                     <div className="newAccount">
                         <h5> New Service</h5>
                     </div>
@@ -44,7 +50,7 @@ function NewService(){
                                         <IonRadio value='Optional' className="col-4">Optional</IonRadio>
                                     </IonRadioGroup>
                                 </div>
-                                <IonButton shape="round" className="text_2 mt-5">
+                                <IonButton shape="round" className="text_2 mt-5" onClick={newDiscount}>
                                     <IonIcon slot="start" icon={add}></IonIcon>
                                      Add discount
                                 </IonButton>
@@ -57,6 +63,9 @@ function NewService(){
                         </div>
                     </div>
                 </div>
+                {discount?<NewDiscount/>:<></>}
+         </div>
+        
     )
     }
 export default NewService;

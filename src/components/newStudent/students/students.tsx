@@ -8,12 +8,10 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import {add, caretBack} from "ionicons/icons";
-import SideMenu from "../sidemenu/sidemenu";
-import Parent from "./parent/parent";
-import "./parents.css";
-import Notification_setting from "../notification_setting";
-import NewParent from "./newParent/NewParent";
-import ParentDetails from "./parentDetails/details";
+import SideMenu from "../../sidemenu/sidemenu";
+import Notification_setting from "../../notification_setting";
+import Student from "../student/Student";
+import NewStudent from "../NewStudent";
 
 interface ParentType{
     id:number;
@@ -22,7 +20,7 @@ interface ParentType{
     img: string;
 }
 
-const Parents: React.FC = () => {
+const Students: React.FC = () => {
   const [currentParent, setCurrentParent]=useState<ParentType| undefined>();
 
   let items = [
@@ -115,20 +113,18 @@ const Parents: React.FC = () => {
       img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
     },
   ];
-
   const[state, setState]=useState(true);
-  const newParent=()=>{
+  const newStudent=()=>{
     setState(!state);
   }
-
   return (
     <div className="parents_page">
       <div className="row">
-        <SideMenu active_Row={"row_13"}/>
+        <SideMenu active_Row={"row_12"}/>
         
         <div className="medSection col-10">
           <div className="parent_title row">
-            <div className="parent_title_text col-9">Parents</div>
+            <div className="parent_title_text col-9">Students</div>
             <div className="parent_title_left col-3"><Notification_setting /></div>
           </div>
           <div className="parent_search row">
@@ -136,7 +132,7 @@ const Parents: React.FC = () => {
               <IonSearchbar className="search_bar"></IonSearchbar>
             </div>
             <div className="options col-6">
-              <IonButton shape="round" className="text_2" href="/ERP_Project/parents">
+              <IonButton shape="round" className="text_2" href="/ERP_Project/students">
                 newest
                 <svg
                   width="21"
@@ -151,29 +147,27 @@ const Parents: React.FC = () => {
                     fill="#4D44B5"
                   />
                 </svg>
-              </IonButton>
-              {state?
-              <IonButton  shape="round" className="text_1" onClick={newParent}>
+                </IonButton>
+                {state?
+              <IonButton  shape="round" className="text_1" onClick={newStudent}>
                 <IonIcon slot="start" icon={add}></IonIcon>
-                add Parent
+                add Student
               </IonButton>:
-              <IonButton shape="round" className="text_1" onClick={newParent}>
+              <IonButton shape="round" className="text_1" onClick={newStudent}>
               <IonIcon slot="start" icon={caretBack}></IonIcon>
               back
             </IonButton>}
             </div>
           </div>
           {state?
-          <>
-          {currentParent?
-          <ParentDetails/>:
           <div className="parent-container">
-            <Parent items={items} setCurrentParent={setCurrentParent} />
-          </div>}</>:<NewParent/>}
+            <Student items={items}  />
+          </div>: 
+          <NewStudent/>}
         </div>
       </div>
     </div>
   );
 };
 
-export default Parents;
+export default Students;

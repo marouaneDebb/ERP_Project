@@ -61,7 +61,7 @@ p{
   justify-content: right;
 }
 
-.btn{
+.btnDashboard{
     border-radius:20px;
     background-color:rgba(77, 68, 181, 0.10);;
     color:#4D44B5;
@@ -69,6 +69,13 @@ p{
     height: 40px;
     justify-self: center;
     margin-bottom:3%;
+    margin-top: 3%;
+    --background: #F3F4FF;
+    --border-width: 2px;
+    --border-color: #4D44B5;
+    --border-style: solid;
+
+      
 }
 .infos{
     padding-top:3%;

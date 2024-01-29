@@ -17,6 +17,7 @@ interface Payment{
   type: String;
 }
 
+
 function Payments(){
     let items=[{id:1, name:"gym", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"ana",price:100, type:"Obligatory"},
     {id:2, name:"transport", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"ana",price:100, type:"Optional"},
@@ -43,7 +44,7 @@ function Payments(){
     
     return(
       <div className="bgroundpayment row">
-        <SideMenu active_Row={"row_13"}/>
+        <SideMenu active_Row={"row_14"}/>
         <div className="medSection col-10">  
           <div className="col-12 midle1 p-3">
                 <div className="service_title row">
@@ -91,7 +92,6 @@ function Payments(){
                                     total={prix}
                                     //selectedPayment={selectedPayment}
                                   />
-                                
                             )}
                             />
                         

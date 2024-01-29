@@ -228,7 +228,7 @@ function DashBoard() {
               </IonRow>
             ))}
           </div>
-          <button className="btn"> View More</button>
+          <IonButton shape="round" className="btnDashboard" href="/ERP_Project/students"> View More</IonButton>
 
           <IonRow className="recent_title">
             <IonCol className="col-lg-9">
@@ -251,7 +251,7 @@ function DashBoard() {
               </IonRow>
             ))}
           </div>
-          <button className="btn"> View More</button>
+          <IonButton href="/ERP_Project/parents" shape="round" className="btnDashboard"> View More</IonButton>
         </div>
       </div>
     </div>
