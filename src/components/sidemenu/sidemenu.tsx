@@ -21,7 +21,7 @@ const SideMenu: React.FC <props>= ({ active_Row }) => {
     if (rowId === "row_11") {
       history.push("/ERP_Project/dashboard");
     } else if (rowId === "row_12") {
-      history.push("/ERP_Project/sidemenu");
+      history.push("/ERP_Project/students");
     } else if (rowId === "row_13") {
       history.push("/ERP_Project/parents");
     } else if (rowId === "row_14") {

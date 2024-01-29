@@ -73,7 +73,7 @@
     justify-content: flex-end;
   }
   .service_content {
-    max-height: 56%; /* Set a maximum height for the container */
+    max-height: 70%; /* Set a maximum height for the container */
     overflow-y: auto; /* Enable vertical scrolling */
     overflow-x: hidden;
   }

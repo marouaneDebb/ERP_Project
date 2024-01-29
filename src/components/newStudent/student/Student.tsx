@@ -5,32 +5,28 @@ import {
   IonCol,
   IonRow,
 } from "@ionic/react";
-import "./parent.css";
+import "./student.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-interface ParentType{
+
+interface props {
+  items: Array<{
     id:number;
     firstname: string;
     lastname: string;
     img: string;
-}
-interface props {
-  items: Array<ParentType>;
-  setCurrentParent(parent:ParentType):void;
+  }>;
 }
 
-const Parent: React.FC <props>= ({ items, setCurrentParent }) => {
-  function handlChange(parent:ParentType){
-    setCurrentParent(parent)
-  }
-   
+const Student: React.FC <props>= ({ items }) => {
+
   return (
 
     <div className="row">
       {items.map((item, index) => (
       
-        <div className="cart col-lg-2 col-md-4 col-sm-6" onClick={() => handlChange(item)}>
+        <div className="cart col-lg-2 col-md-4 col-sm-6 child">
           <div className="horizontal">
             <svg
               width="24"
@@ -91,4 +87,4 @@ const Parent: React.FC <props>= ({ items, setCurrentParent }) => {
   );
 };
 
-export default Parent;
+export default Student;

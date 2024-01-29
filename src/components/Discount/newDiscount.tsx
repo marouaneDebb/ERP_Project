@@ -4,7 +4,7 @@ import { add } from "ionicons/icons";
 function NewDiscount(){
     return(    
     
-    <div className="formulaire">
+    <div className="formulaire mx-4">
                     <div className="newAccount">
                         <h5> New Discount</h5>
                     </div>
