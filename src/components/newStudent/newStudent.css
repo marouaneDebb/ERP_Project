@@ -1,3 +1,8 @@
+.formsDis{
+    max-height: 43%; 
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 .formulaire{
     background-color: white;
     border-radius: 20px;
@@ -33,5 +38,6 @@
     padding-top: 2%;
     padding-bottom: 2%;
     padding-left: 1%;
+    
     
 }

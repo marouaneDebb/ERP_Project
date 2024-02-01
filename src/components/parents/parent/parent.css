@@ -55,3 +55,30 @@
     justify-content: right;
     padding: 10px;
 }
+.horizontal svg,.imageCart{
+    cursor: pointer;
+}
+.dropdownDiv{
+    right: 3rem;
+    top: 2rem;
+    border: 1px solid gray;
+    border-radius: 12px;
+    width: 80%;
+    height: 10%;
+    background-color: #f5f6fa;
+    margin-left: 15%;
+    cursor: pointer;
+
+}
+ul.flex.flex-col.gap-4 {
+    padding: 0;
+    padding-top: 1%;
+    text-align: center; /* Center text */
+    align-items: center;
+  }
+ul.flex.flex-col.gap-4 li {
+    list-style: none; /* Remove bullet points */
+    text-decoration: none; /* Remove text decoration */
+    font-size: 14px; /* Set smaller font size */
+
+  }
