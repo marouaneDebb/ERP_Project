@@ -2,7 +2,8 @@
   overflow: auto;
 }
 .div-1 {
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   width: 100%;
 }
 .colm-1 {
@@ -237,7 +238,7 @@
   color: rgba(0, 0, 0, 0.73);
   letter-spacing: 10px;
   align-self: center;
-  margin-top: 305px;
+  /* margin-top: 30%; */
   max-width: 353px;
   font: 400 25px Archivo Narrow, -apple-system, Roboto, Helvetica, sans-serif;
   margin-left: 43%;
@@ -275,6 +276,7 @@
 .servises {
   display: flex;
   padding-left: 10%;
+  padding-top: 25px;
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -380,7 +382,7 @@
 }
 .row-3 {
   width: 100vw; /* Set the width to 100% of the viewport width */
-  height: 100vh;
+  height: 10vh;
 }
 .buttons{
   
