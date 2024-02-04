@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const URL_BACK = "http://localhost:8090"
+export const  URL_BACK = "http://localhost:8090"
 
-export const getStudents = () => axios(URL_BACK+'/students/all');
-export const createStudent =(student:any)=> axios(URL_BACK+"/students/add",student);
+export const getStudents = () => axios(URL_BACK+'/student/all');
+export const createStudent =(student:any)=> axios(URL_BACK+"/student/add",student);
 
