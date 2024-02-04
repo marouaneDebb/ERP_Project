@@ -2,6 +2,7 @@
 import {IonInput,IonRow, IonLabel, IonSearchbar, InputChangeEventDetail} from "@ionic/react"
 import './newStudent.css'
 import { ChangeEvent, useState } from "react";
+import { useHistory} from 'react-router-dom';
 import { getStudents, createStudent } from '../../Services/StrudentService';
 import { getParent } from "../../Services/ParentService";
 
@@ -30,6 +31,8 @@ function NewStudent(){
         const [dateNaissance,setdateNaissance] = useState('')
         const [dataParent,setdataParent] = useState('')
         const [parent,setParent] = useState('')
+
+        const history = useHistory();
 
 
        
@@ -108,6 +111,7 @@ function NewStudent(){
                 createStudent(requestOptions)
                 .then(res=>{
                     // console.log(res.data,"data in bd")
+                    
                 })
                 .catch(error => {
                     console.error("Une erreur s'est produite lors de la création de l'étudiant:", error);
@@ -118,6 +122,14 @@ function NewStudent(){
                 console.error("Une erreur s'est produite lors de la récupération des données du parent:", error);
             });
             // console.log(student,"student data after")
+            setFirstName('')
+                setLastName("")
+                setAdress("")
+                setClass("");
+                setphone("");
+                setdateNaissance("")
+                setParent("");
+            
         
         }
         
@@ -172,7 +184,7 @@ function NewStudent(){
                                       />
                                 </div>
                             </div>
-                            <div className="col-sm-4 mx-3">
+                            <div className="col-sm-5 mx-3">
                                 <IonLabel>dateNaissance of birth*</IonLabel>
                                 <IonInput className="my-2"
                                  fill="outline" 
@@ -194,10 +206,12 @@ function NewStudent(){
                                 onIonChange={handleChangePhone}
                                 ></IonInput>
                             </div>
-                                <IonLabel>dataParent dataParent*</IonLabel>
-                                <IonInput className="my-2" 
+                            
+                                <IonLabel>CIN Parent*</IonLabel>
+                                <IonInput className="my-2 d-flex justify-content-center" 
                                 fill="outline" type="tel" 
-                                value={dataParent}
+                                value={parent}
+                                placeholder="CIN Parent"
                                 onIonChange={handleChangedataParent}
                                 ></IonInput>
                             
