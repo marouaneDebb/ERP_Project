@@ -111,25 +111,25 @@ function NewStudent(){
                 createStudent(requestOptions)
                 .then(res=>{
                     // console.log(res.data,"data in bd")
+                    setFirstName('')
+                        setLastName("")
+                        setAdress("")
+                        setClass("");
+                        setphone("");
+                        setdateNaissance("")
+                        setParent("");
                     
                 })
                 .catch(error => {
                     console.error("Une erreur s'est produite lors de la création de l'étudiant:", error);
                 });
+                
 
             })
             .catch((error) => {
                 console.error("Une erreur s'est produite lors de la récupération des données du parent:", error);
             });
             // console.log(student,"student data after")
-            setFirstName('')
-                setLastName("")
-                setAdress("")
-                setClass("");
-                setphone("");
-                setdateNaissance("")
-                setParent("");
-            
         
         }
         

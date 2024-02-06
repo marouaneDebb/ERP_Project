@@ -14,111 +14,39 @@ import "./parents.css";
 import Notification_setting from "../notification_setting";
 import NewParent from "./newParent/NewParent";
 import ParentDetails from "./parentDetails/details";
+import { getAllParent } from "../../Services/ParentService";
 
 interface ParentType{
-    id:number;
-    firstname: string;
-    lastname: string;
-    img: string;
+  cin:string;
+  firstName: string;
+  lastName: string;
+  email:string;
+  phone:string;
+  dateInscription:string
+  address:string
+  img: string;
 }
 
 const Parents: React.FC = () => {
   const [currentParent, setCurrentParent]=useState<ParentType| undefined>();
+  const [parents,setParents] = useState([])
+  
 
-  let items = [
-    {
-      id:1,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      id:2,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      id:3,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      id:4,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      id:5,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },{
-      id:6,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      id:7,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      id:8,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      id:9,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      id:10,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },{
-      id:11,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      id:12,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      id:13,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      id:14,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-    {
-      id:15,
-      firstname: "marouane",
-      lastname: "debbagh",
-      img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    },
-  ];
-
+  useEffect(()=>{
+    getAllParent()
+    .then((res)=>{
+      setParents(res.data)
+      console.log(res.data,"parents")
+    })
+  },
+    [])
   const[state, setState]=useState(true);
   const newParent=()=>{
     setState(!state);
+  }
+
+  const newPa=()=>{
+    console.log(parents)
   }
 
   return (
@@ -129,6 +57,7 @@ const Parents: React.FC = () => {
         <div className="medSection col-10">
           <div className="parent_title row">
             <div className="parent_title_text col-9">Parents</div>
+          
             <div className="parent_title_left col-3"><Notification_setting /></div>
           </div>
           <div className="parent_search row">
@@ -168,7 +97,7 @@ const Parents: React.FC = () => {
           {currentParent?
           <ParentDetails/>:
           <div className="parent-container">
-            <Parent items={items} setCurrentParent={setCurrentParent} />
+            <Parent items={parents} setCurrentParent={setCurrentParent} />
           </div>}</>:<NewParent/>}
         </div>
       </div>
