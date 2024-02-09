@@ -1,3 +1,4 @@
+
 import { IonInput, IonRow, IonLabel, IonSearchbar } from "@ionic/react";
 import { ChangeEvent, useState } from "react";
 import { createParent } from "../../../Services/ParentService";

@@ -1,5 +1,5 @@
 
-import {IonInput,IonRow, IonLabel, IonSearchbar, InputChangeEventDetail} from "@ionic/react"
+import {IonInput,IonRow, IonLabel, IonSearchbar, InputChangeEventDetail, IonButton} from "@ionic/react"
 import './newStudent.css'
 import { ChangeEvent, useState } from "react";
 import { useHistory} from 'react-router-dom';
@@ -148,7 +148,6 @@ function NewStudent(){
                                 <input
                                     type="file"
                                     accept="image/*"
-                                    className="photo1"
                                     onChange={handleImageChange}
                                 />
                             </div>
@@ -185,7 +184,7 @@ function NewStudent(){
                                 </div>
                             </div>
                             <div className="col-sm-5 mx-3">
-                                <IonLabel>dateNaissance of birth*</IonLabel>
+                                <IonLabel>date of birth*</IonLabel>
                                 <IonInput className="my-2"
                                  fill="outline" 
                                  type="date"
@@ -208,14 +207,18 @@ function NewStudent(){
                             </div>
                             
                                 <IonLabel>CIN Parent*</IonLabel>
-                                <IonInput className="my-2 d-flex justify-content-center" 
+                                <IonInput className="my-2 md-flex justify-content-center" 
                                 fill="outline" type="tel" 
                                 value={parent}
                                 placeholder="CIN Parent"
                                 onIonChange={handleChangedataParent}
                                 ></IonInput>
+                                <div className="button-container mt-2">
+                                    <IonButton shape="round" className="text_1" onClick={saveStudent}>
+                                        ADD
+                                    </IonButton>
+                                </div>
                             
-                            <button className="btn btn-success mx-auto" onClick={saveStudent}>Add</button>
                         </IonRow>
                     </div>
                 </div>
