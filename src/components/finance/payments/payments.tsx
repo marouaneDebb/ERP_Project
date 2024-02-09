@@ -96,7 +96,7 @@ function Payments(){
                             />
                         
                         <div className="button-container mt-2">
-                            <IonButton shape="round" className="text_1">
+                            <IonButton href="/ERP_Project/pay/online" shape="round" className="text_1">
                                 Pay
                             </IonButton>
                         </div>
