@@ -4,18 +4,9 @@ import "./parent.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useHistory } from "react-router";
+import ParentType from "../../../Models/parentType";
 
-interface ParentType {
-  
-  cin:string;
-  firstName: string;
-  lastName: string;
-  email:string;
-  phone:string;
-  dateInscription:string
-  address:string
-  img: string;
-}
+
 interface props {
   items: Array<ParentType>;
   setCurrentParent(parent: ParentType): void;

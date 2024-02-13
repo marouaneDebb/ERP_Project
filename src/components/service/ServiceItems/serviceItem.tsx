@@ -12,27 +12,20 @@ import "./serviceItem.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { ellipsisHorizontal, ellipsisVertical } from "ionicons/icons";
+import ServiceType from "../../../Models/ServiceType";
 
 interface props {
-  items: Array<{
-    name: string;
-    TotalOrders: string;
-    intrest: string;
-    img: string;
-  }>;
+  item: ServiceType;
 }
 
-const ServiceItem: React.FC <props>= ({ items }) => {
+const ServiceItem: React.FC <props>= ({ item }) => {
+  const img="https://img.freepik.com/free-photo/front-view-smiley-people-holding-rackets_23-2149733032.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396";
+  const TotalOrders=166;
+  const intrest=26
   return (
-      <div className="service_item row">
-        {items.map((item, index) => (
+       
         <div className="service_item row">
-          <div className="service_imageCart col-2">
-            <img
-              src={item.img}
-              alt=".."
-            />
-          </div>
+          
           <div className="service_name col-2">
             <div className="row">
               <IonButton shape="round" className="option">
@@ -43,12 +36,17 @@ const ServiceItem: React.FC <props>= ({ items }) => {
               <p className="service_title">{item.name}</p>
             </div>
           </div>
+
+          <div className="service_imageCart col-2">
+            <div>{item.preodicity} month</div>
+          </div>
+
           <div className="service_TotalOrders col-3">
             <div className="row">
               <div className="icon col-6">
                 <svg
-                  width="62"
-                  height="54"
+                  width="40"
+                  height="36"
                   viewBox="0 0 62 54"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +71,7 @@ const ServiceItem: React.FC <props>= ({ items }) => {
               </div>
               <div className="numbers col-6">
                 <div>
-                  <p className="big_number">{item.TotalOrders}</p>
+                  <p className="big_number">{TotalOrders}</p>
                 </div>
                 <div><p className="lighter_text">Total Orders</p></div>
               </div>
@@ -83,8 +81,8 @@ const ServiceItem: React.FC <props>= ({ items }) => {
             <div className="row">
               <div className="icon col-6">
                 <svg
-                  width="40"
-                  height="40"
+                  width="30"
+                  height="30"
                   viewBox="0 0 40 40"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -97,18 +95,17 @@ const ServiceItem: React.FC <props>= ({ items }) => {
               </div>
               <div className="numbers col-6">
                 <div>
-                  <p className="big_number">{item.intrest}%</p>
+                  <p className="big_number">{intrest}%</p>
                 </div>
                 <div><p className="lighter_text">interest</p></div>
               </div>
             </div>
           </div>
-          <div className="service_more col-2">
+          <div className="service_more col-1">
             <p className="more">...</p>
           </div>
         </div>
-        ))}
-      </div>
+
   );
 };
 

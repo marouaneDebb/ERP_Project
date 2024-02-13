@@ -19,28 +19,47 @@ interface Payment{
 
 
 function Payments(){
-    let items=[{id:1, name:"gym", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"ana",price:100, type:"Obligatory"},
-    {id:2, name:"transport", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"ana",price:100, type:"Optional"},
-    {id:3, name:"gym", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"howa",price:100, type:"Optional"},
-    {id:4, name:"transport", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"hia",price:100, type:"Obligatory"}];
-    
-    const [isChecked, setIsChecked] = useState(false);
-    let [prix, setPrix]=useState(0);
-    let [selectedPayment,setSelectedPayment] = useState<Payment[]>([]);
-    
-    useEffect(() => {
-      let buffer: Payment[] = [];
-      let prices=0;
+  const toPay=[{id:1, name:"gym", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"ana",price:100, type:"Obligatory"},
+  {id:2, name:"transport", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"ana",price:100, type:"Optional"},
+  {id:3, name:"gym", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"howa",price:100, type:"Optional"},
+  {id:4, name:"transport", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"hia",price:100, type:"Obligatory"}];
   
-      items.forEach((payment) => {
-        if (payment.type === 'Obligatory') {
-          buffer.push(payment);
-          prices+=payment.price;
-        }
-      });
-      setSelectedPayment(buffer);
-      setPrix(prices);
-    }, []);
+  const [allChecked, setallChecked] = useState(false);
+  const [prix, setPrix]=useState(0);
+  const [selectedPayment,setSelectedPayment] = useState<Payment[]>([]);
+  
+  const updatePrice=()=>{
+  let totalprice=0;
+  selectedPayment.forEach(element => {
+    totalprice+=element.price;
+  });
+  setPrix(totalprice);
+  }
+    
+  useEffect(()=>{
+    setSelectedPayment(toPay.filter(payment => payment.type === 'Obligatory'));
+  },[]);
+
+  useEffect(() => {
+    updatePrice();
+    if(selectedPayment.length===toPay.length){
+      setallChecked(true)
+    }
+  }, [selectedPayment]);
+
+    const selectAll=()=>{
+      setallChecked(!allChecked);
+      if(!allChecked){
+       setSelectedPayment(toPay);
+      }
+      else{
+        setSelectedPayment(toPay.filter(payment => payment.type === 'Obligatory'));
+      }
+      updatePrice();
+      
+    }
+   
+    
     
     return(
       <div className="bgroundpayment row">
@@ -69,7 +88,8 @@ function Payments(){
                       <IonRow >
                           <IonCol>
                             <input type="checkbox"
-                                checked={isChecked}
+                                onChange={selectAll}
+                                checked={allChecked}
                              /> All
                           </IonCol>
                           <IonCol>Service name</IonCol>
@@ -82,15 +102,15 @@ function Payments(){
                       <hr className="mb-4"></hr>
                       <ListWithPagination<Payment>
                             itemsPerPage={8}
-                            data={items}
+                            data={toPay}
                             renderListItem={(payment) => (
                                   <ShowPayment 
                                     key={payment.id} 
+                                    allChecked={allChecked}
+                                    setallChecked={setallChecked}
                                     payment={payment}
-                                    updatePrice={setPrix} 
-                                    //updateList={setSelectedPayment}
-                                    total={prix}
-                                    //selectedPayment={selectedPayment}
+                                    updateList={setSelectedPayment}
+                                    selectedPayment={selectedPayment}
                                   />
                             )}
                             />

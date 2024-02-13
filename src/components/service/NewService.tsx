@@ -32,7 +32,7 @@ function NewService(){
                                 <IonLabel>Description<IonText color="danger">*</IonText></IonLabel>
                                 <IonTextarea fill="outline" className="my-2"></IonTextarea>
                                 <IonLabel>Discount</IonLabel>
-                                <IonSelect fill="outline" placeholder="choose a discount" value={selectedOption} onIonChange={(e) => setSelectedOption(e.detail.value)}>
+                                <IonSelect fill="outline" placeholder="choose a discount" value={selectedOption} onIonChange={(e) => setSelectedOption(e.detail.value)} multiple={true}>
                                     <IonSelectOption value="option1">Option 1</IonSelectOption>
                                     <IonSelectOption value="option2">Option 2</IonSelectOption>
                                     <IonSelectOption value="option3">Option 3</IonSelectOption>

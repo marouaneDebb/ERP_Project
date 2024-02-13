@@ -1,5 +1,6 @@
 import { IonCol, IonRow } from "@ionic/react";
-import { useState } from "react";
+import { all } from "axios";
+import { useEffect, useState } from "react";
 
 interface Payment{
     id:number;
@@ -12,43 +13,57 @@ interface Payment{
 }
 interface props {
     payment: Payment;
-    updatePrice(price:number):void;
-    total:number;
-    //updateList(payment:Payment[]):void;
-    //selectedPayment:Payment[];
+    updateList(payment:Payment[]):void;
+    allChecked:boolean;
+    selectedPayment:Payment[];
+    setallChecked(a:boolean):void;
 }
 
-const ShowPayment: React.FC <props>= ({ payment,updatePrice,total}) => {
+const ShowPayment: React.FC <props>= ({ payment,updateList,allChecked,selectedPayment,setallChecked}) => {
   const [isChecked, setIsChecked] = useState<boolean>(payment.type === "Obligatory");
-  let buffer1:Payment[]=[]
+
+
+
 
   const handleCheckboxChange = () => {
-    let prix=total;
+    let updatedSelectedPayment: Payment[];
+    const alreadyExists = selectedPayment.some(p => p.id === payment.id);
+  
+    if (!isChecked && !alreadyExists) {
+      updatedSelectedPayment = [...selectedPayment, payment];
+    } else if (isChecked && alreadyExists) {
+      updatedSelectedPayment = selectedPayment.filter(p => p.id !== payment.id);
+    } else {
+      updatedSelectedPayment = selectedPayment;
+    }
+    updateList(updatedSelectedPayment);
+  
     setIsChecked(!isChecked);
-    //buffer1=selectedPayment;
-    if(!isChecked){
-        buffer1.push(payment);
-        prix+=payment.price;
+  
+    if (allChecked) {
+      setallChecked(false);
     }
-    else{
-        buffer1 = buffer1.filter(paiment => paiment.id !== payment.id);
-        prix-=payment.price;
-    }
-    //updateList(buffer1);
-    updatePrice(prix);
-    console.log(prix);
   };
 
+  useEffect(()=>{
+    if(selectedPayment.some(p => p.id === payment.id)){
+        setIsChecked(true)
+    }
+    else{
+        setIsChecked(false)
+    }
+  },[selectedPayment])
+  
   
     return(
         <div className="my-2">
             <IonRow>
                 <IonCol><input type="checkbox"
-                    checked={isChecked}
+                    checked={isChecked||allChecked}
                     disabled={payment.type === "Obligatory"}
                     onChange={handleCheckboxChange}
                 /></IonCol>
-                <IonCol>{payment.name}</IonCol>
+                <IonCol>{payment.name} {allChecked}</IonCol>
                 <IonCol className="subTitle">{payment.dateBegin}</IonCol>
                 <IonCol className="subTitle">{payment.dateEnd}</IonCol>
                 <IonCol>{payment.childName}</IonCol>
