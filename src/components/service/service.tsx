@@ -17,7 +17,7 @@ import ServiceItem from "./ServiceItems/serviceItem";
 import NewService from "./NewService";
 
 const Service: React.FC = () => {
-  let items = [
+  let hhhhh = [
     {
       img: "https://img.freepik.com/free-photo/front-view-smiley-people-holding-rackets_23-2149733032.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396",
       name: "Library",
@@ -41,6 +41,46 @@ const Service: React.FC = () => {
       name: "Library",
       TotalOrders: "1.456",
       intrest: "26",
+    },
+  ];
+
+
+  const items=[
+    {
+      name: "Product 1",
+      start: new Date("2024-02-12"),
+      description: "Description of Product 1",
+      preodicity: 1,
+      price: 100,
+      type: "Optional",
+      discount: []
+    },
+    {
+      name: "Product 2",
+      start: new Date("2024-02-13"),
+      description: "Description of Product 2",
+      preodicity: 2,
+      price: 200,
+      type: "Optional",
+      discount: []
+    },
+    {
+      name: "Product 3",
+      start: new Date("2024-01-12"),
+      description: "Description of Product 3",
+      preodicity: 1,
+      price: 100,
+      type: "Obligatory",
+      discount: []
+    },
+    {
+      name: "Product 4",
+      start: new Date("2024-01-13"),
+      description: "Description of Product 4",
+      preodicity: 2,
+      price: 200,
+      type: "Optional",
+      discount: []
     },
   ];
 
@@ -129,7 +169,8 @@ const Service: React.FC = () => {
                 </div>
               </div>
             </div>
-              <ServiceItem items={items} />
+            {items.map((item) => (
+              <ServiceItem item={item} />))}
           </div>):<NewService/>}
         </div>
       </div>

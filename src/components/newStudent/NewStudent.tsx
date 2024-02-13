@@ -110,6 +110,7 @@ function NewStudent() {
               setParent("");
             })
             .catch((error) => {
+              console.log(parent)
               console.error(
                 "Une erreur s'est produite lors de la création de l'étudiant:",
                 error
@@ -169,7 +170,7 @@ function NewStudent() {
     if (parent.trim()) {
       errorCopy.parent = "";
     } else {
-      errorCopy.parent = "Email is required";
+      errorCopy.parent = "CIN is required";
       valide = false;
     }
     if (phone.trim()) {

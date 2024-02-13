@@ -8,24 +8,22 @@ import {
 import "./student.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import StudentType from "../../../Models/studentType";
 
 
 interface props {
-  items: Array<{
-    idEleve:string,
-        firstName: string,
-        lastName:string,
-        address:string,
-        classs:string,
-        phone:string,
-        dateNaissance:string,
-        parent: any;
-  }>;
+  items: StudentType[];
+  setCurrentStudent(student:StudentType):void;
 }
 const   img= "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph";
 
 
-const Student: React.FC <props>= ({ items }) => {
+const Student: React.FC <props>= ({ items, setCurrentStudent }) => {
+
+
+  function handlChange(student: StudentType) {
+    setCurrentStudent(student);
+  }
 
   return (
 
@@ -47,7 +45,7 @@ const Student: React.FC <props>= ({ items }) => {
               /> 
             </svg>
           </div>
-          <div className="imageCart">
+          <div className="imageCart" onClick={() => handlChange(item)}>
             <img className="parent_img" src={img} alt=".." />
           </div>
           <div className="name">
