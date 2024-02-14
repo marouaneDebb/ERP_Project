@@ -24,7 +24,7 @@ function NewDiscount() {
   const [conditionn, setconditionn] = useState("");
   const [description, setDescription] = useState("");
   const [dateValidation, setDateValidation] = useState("");
-  const [percentage, setPercentage] = useState("");
+  const [percentage, setPercentage] = useState(0);
 
   const handaleNameChange = (e: any) => {
     setNameDiscount(e.target.value);
@@ -66,16 +66,80 @@ function NewDiscount() {
     };
     console.log(DiscJson,"json")
     console.log(requestOptions,"request")
-    addDiscount(requestOptions).then((res)=>{
-      console.log(res.data);
-    }).catch((error) => {
-      console.error(
-        "Une erreur s'est produite lors de la création de remise:",
-        error
-      );
-    });
+
+    if(validation()){
+      addDiscount(requestOptions).then((res)=>{
+        console.log(res.data);
+      }).catch((error) => {
+        console.error(
+          "Une erreur s'est produite lors de la création de remise:",
+          error
+        );
+      });
+    }else{
+      console.error(error,"error de creation de discount")
+    }
   }
 
+  
+    //Validation
+
+    
+    percentage
+    interface ErrorType {
+      nameDiscount: string;
+      description: string;
+      conditionn: string;
+      dateValidation: string;
+      percentage:string
+      
+    }
+    const [error, setError] = useState<ErrorType>({
+      nameDiscount: "",
+      description: "",
+      conditionn: "",
+      dateValidation: "",
+      percentage:""
+    });
+    const errorCopy = { ...error };
+    function validation() {
+      let valide = true;
+      if (nameDiscount.trim()) {
+        errorCopy.nameDiscount = "";
+      } else {
+        console.log("Error firstname est vide");
+        errorCopy.nameDiscount = "First name is required";
+        valide = false;
+      }
+      if (description.trim()) {
+          errorCopy.description = "";
+        } else {
+          errorCopy.description = " description is required";
+          valide = false;
+        }
+      if (conditionn.trim()) {
+        errorCopy.conditionn = "";
+      } else {
+        errorCopy.conditionn = "Condition is required";
+        valide = false;
+      }
+      if (dateValidation) {
+        errorCopy.dateValidation = "";
+      } else {
+        errorCopy.dateValidation = "Date de Validation is required";
+        valide = false;
+      }
+      if (percentage) {
+        errorCopy.percentage = "";
+      } else {
+        errorCopy.percentage = "Prcentage is required";
+        valide = false;
+      }
+
+      
+      setError(errorCopy);
+      return valide;
+    }
   return (
     <div className="formulaire mx-4">
       <div className="newAccount">
@@ -88,53 +152,68 @@ function NewDiscount() {
               <IonLabel>Discount Name*</IonLabel>
               <IonInput
                 placeholder="enter the name"
-                className="my-2"
+                className={`form-control ${error.nameDiscount ? "is-invalid" : ""} `}
                 fill="outline"
                 type="text"
                 value={nameDiscount}
                 onIonChange={handaleNameChange}
               ></IonInput>
+              {error.nameDiscount && (
+                  <div className="invalid-feedback">{error.nameDiscount} </div>
+                )}
             </div>
             <div>
               <IonLabel>conditionn*</IonLabel>
               <IonInput
                 fill="outline"
-                className="my-2"
+                className={`form-control ${error.conditionn ? "is-invalid" : ""} `}
                 type="text"
                 value={conditionn}
                 onIonChange={handaleconditionnChange}
               ></IonInput>
+              {error.conditionn && (
+                  <div className="invalid-feedback">{error.conditionn} </div>
+                )}
             </div>
             <IonLabel>
               Description<IonText color="danger">*</IonText>
             </IonLabel>
             <IonTextarea
               fill="outline"
-              className="my-2"
+              className={`form-control ${error.description ? "is-invalid" : ""} `}
               value={description}
               onIonChange={handaleDescriptionChange}
             ></IonTextarea>
+            {error.description && (
+                  <div className="invalid-feedback">{error.description} </div>
+                )}
           </div>
           <div className="col-5 mx-3">
             <IonLabel>Valid date*</IonLabel>
             <IonInput
               fill="outline"
               type="date"
-              className="my-2"
+              className={`form-control ${error.dateValidation ? "is-invalid" : ""} `}
               
               value={dateValidation}
               onIonChange={handaleDateValidationChange}
               required
             ></IonInput>
+            {error.dateValidation && (
+                  <div className="invalid-feedback">{error.dateValidation} </div>
+                )}
             <IonLabel>Percentage(%)*</IonLabel>
             <IonInput
               placeholder="0"
-              className="my-2"
+              className={`form-control ${error.percentage ? "is-invalid" : ""} `}
               fill="outline"
               type="number"
               value={percentage}
               onIonChange={handalepercentageChange}
             ></IonInput>
+            {error.percentage && (
+                  <div className="invalid-feedback">{error.percentage} </div>
+                )}
           </div>
         </IonRow>
         <div className="button-container">
