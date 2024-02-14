@@ -220,6 +220,8 @@ function NewStudent() {
                 onChange={handleImageChange}
               />
             </div>
+
+            
             <div className="col-sm-4 mx-3">
               <div>
                 <IonLabel>First Name*</IonLabel>
