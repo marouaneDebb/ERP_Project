@@ -1,6 +1,7 @@
-import { IonCol, IonRow } from "@ionic/react";
+import { IonCol, IonFab, IonFabButton, IonIcon, IonRow } from "@ionic/react";
 import ServiceItem from "../../service/ServiceItems/serviceItem";
 import StudentType from "../../../Models/studentType";
+import { add } from "ionicons/icons";
 
 
 interface props{
@@ -86,7 +87,18 @@ const StudentDetails: React.FC<props>=({student})=>{
                         {student.classs} Year
                     </IonCol>
                 </IonRow>
-                <h5 className="m-4">Services</h5>
+                <IonRow>
+                    <IonCol>
+                        <h5 className=" m-4">Services</h5>
+                    </IonCol>
+                    <IonCol className="button-container">
+                        <IonFab >
+                            <IonFabButton className="newServiceButton" href="/ERP_Project/student/asignSrevice" >
+                                <IonIcon icon={add}></IonIcon>
+                            </IonFabButton>
+                        </IonFab>
+                    </IonCol>
+                </IonRow>
                 <div className="parent-container mx-4">
                     {items.map((item)=>
                     <ServiceItem item={item} />)}

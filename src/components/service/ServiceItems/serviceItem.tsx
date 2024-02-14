@@ -25,11 +25,11 @@ const ServiceItem: React.FC <props>= ({ item }) => {
   return (
        
         <div className="service_item row">
-          
-          <div className="service_name col-2">
+          <hr className="asttir"></hr>
+          <div className="service_name col-3">
             <div className="row">
-              <IonButton shape="round" className="option">
-              Optional
+              <IonButton shape="round" className="option" disabled={true}>
+              {item.type}
               </IonButton>
             </div>
             <div className="row">
@@ -38,7 +38,11 @@ const ServiceItem: React.FC <props>= ({ item }) => {
           </div>
 
           <div className="service_imageCart col-2">
-            <div>{item.preodicity} month</div>
+            
+            <div>
+              <p className="service_title">{item.price} DH</p>
+              <p className="lighter_text">/ {item.preodicity} month</p>
+            </div>
           </div>
 
           <div className="service_TotalOrders col-3">

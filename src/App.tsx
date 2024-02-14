@@ -37,6 +37,7 @@ import NewStudent from './components/newStudent/NewStudent';
 import Payments from './components/finance/payments/payments';
 import Students from './components/newStudent/students/students';
 import Main from './components/stripe/checkout';
+import ServiceToStudent from './components/service_student/assignServiceStudent';
 setupIonicReact();
 
 function App(){
@@ -56,6 +57,7 @@ function App(){
               <Route path="/ERP_Project/students" component={Students} exact/>
               <Route path="/ERP_Project/pay" component={Payments} exact/>
               <Route path="/ERP_Project/pay/online" component={Main} exact/>
+              <Route path="/ERP_Project/student/asignSrevice" component={ServiceToStudent} exact/>
 
             </IonRouterOutlet>
             
