@@ -85,7 +85,7 @@ function NewStudent() {
 
         console.log(student.parent, "The parent in student Data Manually");
 
-        console.log(info, "The info in Backend Data");
+        // console.log(info, "The info of parent in Backend Data");
 
         const jsonData = JSON.stringify(student);
 
@@ -124,6 +124,7 @@ function NewStudent() {
           "Une erreur s'est produite lors de la récupération des données du parent:",
           error
         );
+        errorCopy.dataParent='CIN is not valide'
       });
     // console.log(student,"student data after")
   }
@@ -137,7 +138,7 @@ function NewStudent() {
     dateNaissance: string;
     address: string;
     classs: string;
-    parent: any;
+    dataParent: string;
   }
   const [error, setError] = useState<ErrorType>({
     firstName: "",
@@ -146,10 +147,10 @@ function NewStudent() {
     dateNaissance: "",
     address: "",
     classs: "",
-    parent: null,
+    dataParent: "",
   });
+  const errorCopy = { ...error };
   function validation() {
-    const errorCopy = { ...error };
     let valide = true;
     if (firstName.trim()) {
       errorCopy.firstName = "";
@@ -166,10 +167,10 @@ function NewStudent() {
       errorCopy.lastName = "Last name  is required";
       valide = false;
     }
-    if (parent.trim()) {
-      errorCopy.parent = "";
+    if (dataParent.trim()) {
+      errorCopy.dataParent = "";
     } else {
-      errorCopy.parent = "Email is required";
+      errorCopy.dataParent = "CIN of parent is required";
       valide = false;
     }
     if (phone.trim()) {
@@ -219,6 +220,8 @@ function NewStudent() {
                 onChange={handleImageChange}
               />
             </div>
+
+            
             <div className="col-sm-4 mx-3">
               <div>
                 <IonLabel>First Name*</IonLabel>
@@ -314,7 +317,7 @@ function NewStudent() {
             <IonLabel>CIN Parent*</IonLabel>
             <IonInput
               className={`form-control ${
-                error.parent ? "is-invalid" : ""
+                error.dataParent ? "is-invalid" : ""
               } `}
               fill="outline"
               type="tel"
@@ -322,8 +325,8 @@ function NewStudent() {
               placeholder="CIN Parent"
               onIonChange={handleChangedataParent}
             ></IonInput>
-            {error.parent && (
-                  <div className="invalid-feedback">{error.parent} </div>
+            {error.dataParent && (
+                  <div className="invalid-feedback">{error.dataParent} </div>
                 )}
             <div className="button-container mt-2">
               <IonButton shape="round" className="text_1" onClick={saveStudent}>
