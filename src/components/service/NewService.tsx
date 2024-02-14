@@ -36,17 +36,18 @@ interface discountType {
     undefined
   );
   const [discount, setDiscount] = useState(false);
-  const [discounts, setDiscounts] = useState<discountType[]>([]);
+  const [remise, setRemise] = useState<discountType>();
   const [discountsExist, setDiscountsExist] = useState<discountType[]>([]);
   const handleSelectChange = (e:any) => {
     const selectedIndex = e.target.value;
     setSelectedOption(selectedIndex);
 
-    // Get the selected discount object based on the index
-    const selectedDiscount = discountsExist[selectedIndex];
-    // const discountJson = JSON.stringify(selectedDiscount)
-    // Add the selected discount to the discountCh list
-    setDiscounts([...discounts, selectedDiscount]);
+    // // Get the selected discount object based on the index
+    // const selectedDiscount = discountsExist[selectedIndex];
+    // // const discountJson = JSON.stringify(selectedDiscount)
+    // // Add the selected discount to the discountCh list
+
+    setRemise(discountsExist[selectedIndex]);
   };
 
 
@@ -91,14 +92,11 @@ interface discountType {
         price,
         type,
         description,
-        discounts
+        remise
     }
     console.log(service,"service data")
-    const discJson:any =[]
-    discounts.map((disc) =>{
-        discJson.push(JSON.stringify({disc}))
-    })
-    // console.log(discJson, "disc Json")
+    // service.remise = discJson
+    console.log(remise, "remise en  bd after")
 
     const serviceJson = JSON.stringify(service);
 
@@ -110,19 +108,31 @@ interface discountType {
       },
       data: serviceJson,
     };
-    console.log(serviceJson, "service data");
-    console.log(requestOptions, "service data");
+
+    // console.log(requestOptions, "service data");
    
     
     createService(requestOptions).then((res) =>{
-      console.log(res.data)
+      console.log(res.data,"data in back")
+      alert("Création terminée avec succès ")
+      setType("")
+      setPrice("")
+      setPereodicity("")
+      setDescription("")
+      setStart("")
+      setName("")
+      setSelectedOption(undefined)
+      
+      
+
     }).catch((error) => {
       console.error(
         "Une erreur s'est produite lors de la création de service:",
         error
       );
     });
-    // console.log(discounts,"choisi disc")
+
+    // console.log(remise,"choisi disc")
   }
 
   //discount
