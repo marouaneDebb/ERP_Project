@@ -167,7 +167,7 @@ function NewStudent() {
       errorCopy.lastName = "Last name  is required";
       valide = false;
     }
-    if (parent.trim()) {
+    if (dataParent.trim()) {
       errorCopy.parent = "";
     } else {
       errorCopy.parent = "CIN is required";

@@ -1,7 +1,7 @@
 import DiscoutType from "./DiscountType";
 
 export default interface ServiceType{
-    name:String;
+    name:string;
     start:Date;
     description:String;
     preodicity:number;
