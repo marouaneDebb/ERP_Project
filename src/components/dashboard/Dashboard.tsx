@@ -8,8 +8,11 @@ import {
   IonButton,
   IonInput,
   IonSearchbar,
+  IonFabButton,
+  IonFabList,
+  IonFab,
 } from "@ionic/react";
-import { search, addCircle } from "ionicons/icons";
+import { search, addCircle, chevronDownCircle, colorPalette, globe, document } from "ionicons/icons";
 import Notification_setting from "../notification_setting";
 import SideMenu from "../sidemenu/sidemenu";
 import ListWithPagination from "../page/pages";
@@ -86,13 +89,10 @@ function DashBoard() {
       <SideMenu active_Row={"row_11"} />
       <div className="Midl col-lg-7">
         <div className="container">
-          <IonRow>
             <h3 className="col-lg-4">Dashboard</h3>
             <div className="search_place col-lg-8">
               <IonSearchbar className="search_bar"></IonSearchbar>
             </div>
-          </IonRow>
-
           <IonRow className="second_row rounded">
             <IonRow className="col-4">
               <svg

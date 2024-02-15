@@ -23,7 +23,7 @@
     width: 50%;
   }
 .service_title{
-    font: 20px Poppins, sans-serif;
+    font: 18px Poppins, sans-serif;
     font-weight: bold;
     color: #303972;
     padding-top: 2%;
@@ -42,7 +42,7 @@
     padding-top: 2%;
 }
 .lighter_text{
-    font: 17px Poppins, sans-serif;
+    font: 16px Poppins, sans-serif;
     font-weight: lighter;
     color: #98989a;
 }
@@ -54,4 +54,9 @@
 .service_more{
     display: flex;
     justify-content: flex-end;
+}
+
+.asttir{
+    width: 91%;
+    margin-left: 4.5%;
 }

@@ -1,5 +1,10 @@
-
-import { IonInput, IonRow, IonLabel, IonSearchbar } from "@ionic/react";
+import {
+  IonInput,
+  IonRow,
+  IonLabel,
+  IonSearchbar,
+  IonButton,
+} from "@ionic/react";
 import { ChangeEvent, useState } from "react";
 import { createParent } from "../../../Services/ParentService";
 import { URL_BACK } from "../../../Services/StrudentService";
@@ -10,22 +15,16 @@ function NewParent() {
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     console.log(file);
-    
+
     if (file) {
-
-      // const formData = new FormData();
-      // formData.append('file', file);
-      // console.log(formData,"formData")
-      // console.log(file,"formData")
-
       const reader = new FileReader();
       reader.onloadend = () => {
         setImageSrc(reader.result as string);
-        console.log(reader.result,"reader.reult")
+        console.log(reader.result, "reader.reult");
       };
       reader.readAsDataURL(file);
-    }else{
-      console.log("Error de file")
+    } else {
+      console.log("Error de file");
     }
   };
 
@@ -39,7 +38,7 @@ function NewParent() {
   const [dateInscription, setdateInscription] = useState("");
 
   const handleChangeFisrt = (e: any) => {
-    const newValue = e.target?.value || '';
+    const newValue = e.target?.value || "";
     setFirstName(newValue);
     // console.log(e, "target.value");
   };
@@ -64,7 +63,7 @@ function NewParent() {
   };
 
   const saveParent = () => {
-    console.log("Validation")
+    console.log("Validation");
     if (validation()) {
       const parent = {
         cin,
@@ -74,13 +73,13 @@ function NewParent() {
         phone,
         dateInscription,
         address,
-        imageSrc
+        imageSrc,
       };
 
       console.log(parent, "contenu parent");
 
       const jsonData = JSON.stringify(parent);
-      console.log(jsonData,"json format");
+      console.log(jsonData, "json format");
 
       const requestOptions = {
         method: "POST",
@@ -93,6 +92,14 @@ function NewParent() {
       createParent(requestOptions)
         .then((res) => {
           console.log(res.data, "data in bd");
+          alert("Création terminée avec succès")
+          setdateInscription("");
+          setFirstName("");
+          setAddress("");
+          setCIN("");
+          setEmail("");
+          setLastName("");
+          setPhone("");
         })
         .catch((error) => {
           console.error(
@@ -114,7 +121,7 @@ function NewParent() {
     phone: string;
     dateInscription: string;
     address: string;
-    cin:string
+    cin: string;
   }
   const [error, setError] = useState<ErrorType>({
     firstName1: "",
@@ -123,21 +130,20 @@ function NewParent() {
     phone: "",
     dateInscription: "",
     address: "",
-    cin:""
+    cin: "",
   });
   function validation() {
-
-    const errorCopy ={... error}
+    const errorCopy = { ...error };
     let valide = true;
     if (firstName.trim()) {
       errorCopy.firstName1 = "";
-      console.log(firstName,"name pas vide")
-      console.log(error.firstName1,"error,si name pas vide")
+      console.log(firstName, "name pas vide");
+      console.log(error.firstName1, "error,si name pas vide");
     } else {
       console.log("Error firstname est vide");
       errorCopy.firstName1 = "First name is required";
-      console.log(errorCopy.firstName1,"errorCopySimple")
-      console.log(firstName,"first name est vide")
+      console.log(errorCopy.firstName1, "errorCopySimple");
+      console.log(firstName, "first name est vide");
       valide = false;
     }
     if (lastName.trim()) {
@@ -176,7 +182,7 @@ function NewParent() {
       errorCopy.cin = " Date is required";
       valide = false;
     }
-    setError(errorCopy)
+    setError(errorCopy);
     return valide;
   }
 
@@ -194,7 +200,7 @@ function NewParent() {
                 <img src={imageSrc} alt="Selected" className="photo1" />
               )} */}
 
-{imageSrc && <img src={imageSrc} alt="Selected" />}
+              {imageSrc && <img src={imageSrc} alt="Selected" />}
               <input
                 type="file"
                 accept="image/*"
@@ -207,7 +213,7 @@ function NewParent() {
                 <IonLabel>First Name*</IonLabel>
                 <IonInput
                   className={`form-control ${
-                    error.firstName1 ? "is-invalid":""
+                    error.firstName1 ? "is-invalid" : ""
                   } `}
                   fill="outline"
                   type="text"
@@ -215,7 +221,7 @@ function NewParent() {
                   onIonChange={handleChangeFisrt}
                   placeholder="your first name"
                 ></IonInput>
-                
+
                 {error.firstName1 && (
                   <div className="invalid-feedback">{error.firstName1} </div>
                 )}
@@ -224,7 +230,7 @@ function NewParent() {
                 <IonLabel>Last Name*</IonLabel>
                 <IonInput
                   className={`form-control ${
-                    error.lastName ? "is-invalid":""
+                    error.lastName ? "is-invalid" : ""
                   } `}
                   placeholder="your last name"
                   fill="outline"
@@ -232,23 +238,21 @@ function NewParent() {
                   value={lastName}
                   onIonChange={handleChangeLast}
                 ></IonInput>
-                 {error.lastName && (
+                {error.lastName && (
                   <div className="invalid-feedback">{error.lastName} </div>
                 )}
               </div>
               <div>
                 <IonLabel>cin*</IonLabel>
                 <IonInput
-                  className={`form-control ${
-                    error.cin ? "is-invalid":""
-                  } `}
+                  className={`form-control ${error.cin ? "is-invalid" : ""} `}
                   placeholder="AA111111"
                   fill="outline"
                   type="text"
                   value={cin}
                   onIonChange={handleChangecin}
                 ></IonInput>
-                 {error.cin && (
+                {error.cin && (
                   <div className="invalid-feedback">{error.cin} </div>
                 )}
               </div>
@@ -256,7 +260,7 @@ function NewParent() {
                 <IonLabel>Address*</IonLabel>
                 <IonInput
                   className={`form-control ${
-                    error.address ? "is-invalid":""
+                    error.address ? "is-invalid" : ""
                   } `}
                   placeholder="Your address"
                   fill="outline"
@@ -264,7 +268,7 @@ function NewParent() {
                   value={address}
                   onIonChange={handleChangeAddress}
                 />
-                 {error.address && (
+                {error.address && (
                   <div className="invalid-feedback">{error.address} </div>
                 )}
               </div>
@@ -272,47 +276,45 @@ function NewParent() {
             <div className="col-4 mx-3">
               <IonLabel>Email*</IonLabel>
               <IonInput
-                className={`form-control ${
-                  error.email ? "is-invalid":""
-                } `}
+                className={`form-control ${error.email ? "is-invalid" : ""} `}
                 fill="outline"
                 type="email"
                 value={email}
                 onIonChange={handleChangeEmail}
               ></IonInput>
-               {error.email && (
-                  <div className="invalid-feedback">{error.email} </div>
-                )}
+              {error.email && (
+                <div className="invalid-feedback">{error.email} </div>
+              )}
               <IonLabel>Phone*</IonLabel>
               <IonInput
-                className={`form-control ${
-                  error.phone ? "is-invalid":""
-                } `}
+                className={`form-control ${error.phone ? "is-invalid" : ""} `}
                 fill="outline"
                 type="tel"
                 value={phone}
                 onIonChange={handleChangePhone}
               ></IonInput>
-               {error.phone && (
-                  <div className="invalid-feedback">{error.phone} </div>
-                )}
-              <IonLabel>Date of birth*</IonLabel>
+              {error.phone && (
+                <div className="invalid-feedback">{error.phone} </div>
+              )}
+              <IonLabel>Date of Inscription</IonLabel>
               <IonInput
                 className={`form-control ${
-                  error.dateInscription ? "is-invalid":""
+                  error.dateInscription ? "is-invalid" : ""
                 } `}
                 fill="outline"
                 type="date"
                 value={dateInscription}
                 onIonChange={handleChangedateInscription}
               ></IonInput>
-               {error.dateInscription && (
-                  <div className="invalid-feedback">{error.dateInscription} </div>
-                )}
+              {error.dateInscription && (
+                <div className="invalid-feedback">{error.dateInscription} </div>
+              )}
             </div>
-            <button className="btn btn-success mx-auto" onClick={saveParent}>
-              Save
-            </button>
+            <div className="button-container mt-2">
+              <IonButton shape="round" className="text_1" onClick={saveParent}>
+                Save
+              </IonButton>
+            </div>
           </IonRow>
         </div>
       </div>
