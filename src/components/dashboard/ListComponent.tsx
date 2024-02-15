@@ -17,7 +17,6 @@ interface Student {
   
   const ListComponent: React.FC<ListComponentProps> = ({data }) => {
 
-
     return(
         <div className='unpaid_student'> 
                                 <IonRow  className='row1'>

@@ -168,7 +168,9 @@ function NewStudent() {
       valide = false;
     }
     if (dataParent.trim()) {
+
       errorCopy.dataParent = "";
+
     } else {
       errorCopy.dataParent = "CIN is required";
       valide = false;
