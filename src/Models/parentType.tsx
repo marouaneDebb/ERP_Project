@@ -1,12 +1,11 @@
 export default interface ParentType{
-    id: number;
-    firstname: string;
-    lastname: string;
-    phone:String;
-    email:String;
-    dateOfBirth:Date;
-    address:String;
-    imgUrl: string;
-    CIN:String;
+  cin:string;
+  firstName: string;
+  lastName: string;
+  email:string;
+  phone:string;
+  dateInscription:string
+  address:string
+  img: string;
 
 }

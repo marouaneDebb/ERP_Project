@@ -1,5 +1,5 @@
 
-import { IonInput, IonRow, IonLabel, IonSearchbar } from "@ionic/react";
+import { IonInput, IonRow, IonLabel, IonSearchbar, IonButton } from "@ionic/react";
 import { ChangeEvent, useState } from "react";
 import { createParent } from "../../../Services/ParentService";
 import { URL_BACK } from "../../../Services/StrudentService";
@@ -12,11 +12,6 @@ function NewParent() {
     console.log(file);
     
     if (file) {
-
-      // const formData = new FormData();
-      // formData.append('file', file);
-      // console.log(formData,"formData")
-      // console.log(file,"formData")
 
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -310,9 +305,10 @@ function NewParent() {
                   <div className="invalid-feedback">{error.dateInscription} </div>
                 )}
             </div>
-            <button className="btn btn-success mx-auto" onClick={saveParent}>
+            <div className="button-container mt-2">
+            <IonButton shape="round" className="text_1" onClick={saveParent}>
               Save
-            </button>
+            </IonButton></div>
           </IonRow>
         </div>
       </div>

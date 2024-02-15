@@ -15,17 +15,9 @@ import Notification_setting from "../notification_setting";
 import NewParent from "./newParent/NewParent";
 import ParentDetails from "./parentDetails/details";
 import { getAllParent } from "../../Services/ParentService";
+import ParentType from "../../Models/parentType";
 
-interface ParentType{
-  cin:string;
-  firstName: string;
-  lastName: string;
-  email:string;
-  phone:string;
-  dateInscription:string
-  address:string
-  img: string;
-}
+
 
 const Parents: React.FC = () => {
   const [currentParent, setCurrentParent]=useState<ParentType| undefined>();
@@ -36,7 +28,6 @@ const Parents: React.FC = () => {
     getAllParent()
     .then((res)=>{
       setParents(res.data)
-      console.log(res.data,"parents")
     })
   },
     [])
@@ -95,7 +86,7 @@ const Parents: React.FC = () => {
           {state?
           <>
           {currentParent?
-          <ParentDetails/>:
+          <ParentDetails parent={currentParent}/>:
           <div className="parent-container">
             <Parent items={parents} setCurrentParent={setCurrentParent} />
           </div>}</>:<NewParent/>}

@@ -15,60 +15,74 @@ import "./service.css";
 import Notification_setting from "../notification_setting";
 import ServiceItem from "./ServiceItems/serviceItem";
 import NewService from "./NewService";
+import ServiceType from "../../Models/ServiceType";
 
 const Service: React.FC = () => {
-  let items = [
+
+
+  const services=[
     {
-      img: "https://img.freepik.com/free-photo/front-view-smiley-people-holding-rackets_23-2149733032.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396",
-      name: "Library",
-      TotalOrders: "1.456",
-      intrest: "26",
+      name: "Product 1",
+      start: new Date("2024-02-12"),
+      description: "Description of Product 1",
+      preodicity: 1,
+      price: 100,
+      type: "Optional",
+      discount: []
     },
     {
-      img: "https://img.freepik.com/free-photo/front-view-smiley-people-holding-rackets_23-2149733032.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396",
-      name: "Library",
-      TotalOrders: "1.456",
-      intrest: "26",
+      name: "Product 2",
+      start: new Date("2024-02-13"),
+      description: "Description of Product 2",
+      preodicity: 2,
+      price: 200,
+      type: "Optional",
+      discount: []
     },
     {
-      img: "https://img.freepik.com/free-photo/front-view-smiley-people-holding-rackets_23-2149733032.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396",
-      name: "Library",
-      TotalOrders: "1.456",
-      intrest: "26",
+      name: "Product 3",
+      start: new Date("2024-01-12"),
+      description: "Description of Product 3",
+      preodicity: 1,
+      price: 100,
+      type: "Obligatory",
+      discount: []
     },
     {
-      img: "https://img.freepik.com/free-photo/front-view-smiley-people-holding-rackets_23-2149733032.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396",
-      name: "Library",
-      TotalOrders: "1.456",
-      intrest: "26",
+      name: "Product 4",
+      start: new Date("2024-01-13"),
+      description: "Description of Product 4",
+      preodicity: 2,
+      price: 200,
+      type: "Optional",
+      discount: []
     },
   ];
 
   const [selectedOption, setSelectedOption] = useState("defult");
   const [selectedOption1, setSelectedOption1] = useState("");
-
   const [selectedOption2, setSelectedOption2] = useState("");
-  const[state, setState]=useState(true);
+  const [state, setState]=useState(true);
+  const [items,setItems]=useState<ServiceType[]>(services)
 
   const handleClick = () => {
     setSelectedOption("defult");
     setSelectedOption1("");
     setSelectedOption2("");
-    console.log("Text clicked!");
+    setItems(services);
   };
   const handleClick1 = () => {
     setSelectedOption("");
     setSelectedOption1("defult");
     setSelectedOption2("");
-
-    console.log("Text clicked!");
+    setItems(services.filter(s=>s.type==="Optional"));
   };
   const handleClick2 = () => {
     setSelectedOption("");
     setSelectedOption1("");
     setSelectedOption2("defult");
+    setItems(services.filter(s=>s.type==="Obligatory"))
 
-    console.log("Text clicked!");
   };
   const newService=()=>{
     setState(!state);
@@ -90,7 +104,7 @@ const Service: React.FC = () => {
           </div>
           <div className="addService">
             {state?
-            <IonButton shape="round" className="text_1" onClick={newService}>
+            <IonButton shape="round" className="text_1 mx-5" onClick={newService}>
               <IonIcon slot="start" icon={add}></IonIcon>
               add service
             </IonButton>:
@@ -129,7 +143,8 @@ const Service: React.FC = () => {
                 </div>
               </div>
             </div>
-              <ServiceItem items={items} />
+            {items.map((item) => (
+              <ServiceItem item={item} />))}
           </div>):<NewService/>}
         </div>
       </div>

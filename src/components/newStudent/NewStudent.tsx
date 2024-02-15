@@ -110,6 +110,7 @@ function NewStudent() {
               setParent("");
             })
             .catch((error) => {
+              console.log(parent)
               console.error(
                 "Une erreur s'est produite lors de la création de l'étudiant:",
                 error
@@ -139,6 +140,7 @@ function NewStudent() {
     address: string;
     classs: string;
     dataParent: string;
+
   }
   const [error, setError] = useState<ErrorType>({
     firstName: "",
@@ -147,7 +149,9 @@ function NewStudent() {
     dateNaissance: "",
     address: "",
     classs: "",
+
     dataParent: "",
+
   });
   const errorCopy = { ...error };
   function validation() {
@@ -168,9 +172,11 @@ function NewStudent() {
       valide = false;
     }
     if (dataParent.trim()) {
+
       errorCopy.dataParent = "";
     } else {
       errorCopy.dataParent = "CIN of parent is required";
+
       valide = false;
     }
     if (phone.trim()) {
@@ -321,7 +327,7 @@ function NewStudent() {
               } `}
               fill="outline"
               type="tel"
-              value={parent}
+              value={dataParent}
               placeholder="CIN Parent"
               onIonChange={handleChangedataParent}
             ></IonInput>
