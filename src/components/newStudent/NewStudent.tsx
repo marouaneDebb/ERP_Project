@@ -138,7 +138,7 @@ function NewStudent() {
     dateNaissance: string;
     address: string;
     classs: string;
-    parent: any;
+    dataParent:string
   }
   const [error, setError] = useState<ErrorType>({
     firstName: "",
@@ -147,7 +147,7 @@ function NewStudent() {
     dateNaissance: "",
     address: "",
     classs: "",
-    parent: null,
+    dataParent:''
   });
   function validation() {
     const errorCopy = { ...error };
@@ -167,10 +167,10 @@ function NewStudent() {
       errorCopy.lastName = "Last name  is required";
       valide = false;
     }
-    if (parent.trim()) {
-      errorCopy.parent = "";
+    if (dataParent.trim()) {
+      errorCopy.dataParent = "";
     } else {
-      errorCopy.parent = "CIN is required";
+      errorCopy.dataParent = "CIN is required";
       valide = false;
     }
     if (phone.trim()) {
@@ -315,16 +315,16 @@ function NewStudent() {
             <IonLabel>CIN Parent*</IonLabel>
             <IonInput
               className={`form-control ${
-                error.parent ? "is-invalid" : ""
+                error.dataParent ? "is-invalid" : ""
               } `}
               fill="outline"
               type="tel"
-              value={parent}
+              value={dataParent}
               placeholder="CIN Parent"
               onIonChange={handleChangedataParent}
             ></IonInput>
-            {error.parent && (
-                  <div className="invalid-feedback">{error.parent} </div>
+            {error.dataParent && (
+                  <div className="invalid-feedback">{error.dataParent} </div>
                 )}
             <div className="button-container mt-2">
               <IonButton shape="round" className="text_1" onClick={saveStudent}>
