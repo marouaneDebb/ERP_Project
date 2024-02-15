@@ -116,6 +116,7 @@ function NewService() {
           setDescription("");
           setStart("");
           setName("");
+          
           setSelectedOption(undefined);
         })
         .catch((error) => {

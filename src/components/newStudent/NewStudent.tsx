@@ -7,7 +7,7 @@ import {
   IonButton,
 } from "@ionic/react";
 import "./newStudent.css";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { getStudents, createStudent } from "../../Services/StrudentService";
 import { getParent } from "../../Services/ParentService";
@@ -39,6 +39,29 @@ function NewStudent() {
 
   const history = useHistory();
 
+  //Error
+  interface ErrorType {
+    firstName: string;
+    lastName: string;
+    phone: string;
+    dateNaissance: string;
+    address: string;
+    classs: string;
+    dataParent: string;
+
+  }
+  const [error, setError] = useState<ErrorType>({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    dateNaissance: "",
+    address: "",
+    classs: "",
+
+    dataParent: "",
+
+  });
+
   // const handleChangeFirst = (e: React.ChangeEvent<HTMLInputElement>) => {
   //     const newValue = e.target.value;
   //     setFirstName(newValue);
@@ -68,6 +91,7 @@ function NewStudent() {
   };
 
   function saveStudent(e: any) {
+    if (validation()) {
     const student = {
       firstName,
       lastName,
@@ -97,10 +121,11 @@ function NewStudent() {
           },
           data: jsonData,
         };
-        if (validation()) {
+        
           createStudent(requestOptions)
             .then((res) => {
               // console.log(res.data,"data in bd")
+              alert("Création terminée avec succès")
               setFirstName("");
               setLastName("");
               setAdress("");
@@ -108,6 +133,7 @@ function NewStudent() {
               setphone("");
               setdateNaissance("");
               setParent("");
+              setdataParent("");
             })
             .catch((error) => {
               console.log(parent)
@@ -116,9 +142,7 @@ function NewStudent() {
                 error
               );
             });
-        } else {
-          console.error("error de la creation d'etudiant");
-        }
+       
       })
       .catch((error) => {
         console.error(
@@ -128,31 +152,13 @@ function NewStudent() {
         errorCopy.dataParent='CIN is not valide'
       });
     // console.log(student,"student data after")
+  } else {
+    console.error("error de la creation d'etudiant");
   }
-
+  }
   //Les errors
 
-  interface ErrorType {
-    firstName: string;
-    lastName: string;
-    phone: string;
-    dateNaissance: string;
-    address: string;
-    classs: string;
-    dataParent: string;
 
-  }
-  const [error, setError] = useState<ErrorType>({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    dateNaissance: "",
-    address: "",
-    classs: "",
-
-    dataParent: "",
-
-  });
   const errorCopy = { ...error };
   function validation() {
     let valide = true;
@@ -206,6 +212,8 @@ function NewStudent() {
     setError(errorCopy);
     return valide;
   }
+
+
 
   return (
     <div className="midle1 p-3">

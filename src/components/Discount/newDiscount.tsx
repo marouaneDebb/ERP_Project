@@ -70,6 +70,12 @@ function NewDiscount() {
     if(validation()){
       addDiscount(requestOptions).then((res)=>{
         console.log(res.data);
+        alert("Création terminée avec succès")
+        setDateValidation("")
+        setDescription("")
+        setNameDiscount("")
+        setPercentage(0)
+        setconditionn("")
       }).catch((error) => {
         console.error(
           "Une erreur s'est produite lors de la création de remise:",
