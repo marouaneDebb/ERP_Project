@@ -4,9 +4,10 @@ export default interface ServiceType{
     name:string;
     start:Date;
     description:String;
-    preodicity:number;
+    pereodicity:number;
     price:number;
     type:String;
-    discount:DiscoutType[];
-
+    discount:DiscoutType[];          
+          
+          
 }
