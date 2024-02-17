@@ -66,6 +66,7 @@ const Service: React.FC = () => {
   const [selectedOption2, setSelectedOption2] = useState("");
   const [state, setState]=useState(true);
   const [services,setServices]=useState<ServiceType[]>([])
+  const [items,setItems]=useState<ServiceType[]>(services)
   
   useEffect(()=>{
     getAllServices().then((res) =>{
@@ -73,7 +74,6 @@ const Service: React.FC = () => {
       setServices(res.data)
     })
   },[])
-  const [items,setItems]=useState<ServiceType[]>(services)
   
   const handleClick = () => {
     setSelectedOption("defult");

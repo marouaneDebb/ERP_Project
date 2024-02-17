@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./dashboard.css";
 import {
@@ -17,6 +17,7 @@ import Notification_setting from "../notification_setting";
 import SideMenu from "../sidemenu/sidemenu";
 import ListWithPagination from "../page/pages";
 import ListComponent from "./ListComponent";
+import { getAllStudentNoPayed } from "../../Services/FinanceService";
 
 interface Student {
   firstName: string;
@@ -32,57 +33,66 @@ function DashBoard() {
   let student = 967;
   let url =
     "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?w=740&t=st=1702236437~exp=1702237037~hmac=44b4655423a2cb3bb4fa6f54d3828c164cc373a3d35fec1ad38416641b45421c";
-  const studentData: Student[] = [
-    {
-      firstName: "youssef",
-      lastName: "oudourouch",
-      id: 22301035,
-      class: "2A",
-      sold: 58,
-    },
-    {
-      firstName: "younss",
-      lastName: "JAMALDDIN",
-      id: 2230102,
-      class: "2A",
-      sold: 654,
-    },
-    {
-      firstName: "ali",
-      lastName: "LHRCHI",
-      id: 223010244,
-      class: "2A",
-      sold: 959,
-    },
-    {
-      firstName: "brahim",
-      lastName: "diroch",
-      id: 22301062,
-      class: "3A",
-      sold: 654,
-    },
-    {
-      firstName: "youns",
-      lastName: "JAMIN",
-      id: 223330102,
-      class: "2A",
-      sold: 654,
-    },
-    {
-      firstName: "khadija",
-      lastName: "ddaoudy",
-      id: 2234412,
-      class: "2A",
-      sold: 654,
-    },
-    {
-      firstName: "brahim",
-      lastName: "diroch",
-      id: 2231062,
-      class: "3A",
-      sold: 654,
-    },
-  ];
+  // const studentData: Student[] = [
+  //   {
+  //     firstName: "youssef",
+  //     lastName: "oudourouch",
+  //     id: 22301035,
+  //     class: "2A",
+  //     sold: 58,
+  //   },
+  //   {
+  //     firstName: "younss",
+  //     lastName: "JAMALDDIN",
+  //     id: 2230102,
+  //     class: "2A",
+  //     sold: 654,
+  //   },
+  //   {
+  //     firstName: "ali",
+  //     lastName: "LHRCHI",
+  //     id: 223010244,
+  //     class: "2A",
+  //     sold: 959,
+  //   },
+  //   {
+  //     firstName: "brahim",
+  //     lastName: "diroch",
+  //     id: 22301062,
+  //     class: "3A",
+  //     sold: 654,
+  //   },
+  //   {
+  //     firstName: "youns",
+  //     lastName: "JAMIN",
+  //     id: 223330102,
+  //     class: "2A",
+  //     sold: 654,
+  //   },
+  //   {
+  //     firstName: "khadija",
+  //     lastName: "ddaoudy",
+  //     id: 2234412,
+  //     class: "2A",
+  //     sold: 654,
+  //   },
+  //   {
+  //     firstName: "brahim",
+  //     lastName: "diroch",
+  //     id: 2231062,
+  //     class: "3A",
+  //     sold: 654,
+  //   },
+  // ];
+
+  const[studentData,setStudentData] = useState([])
+//   useEffect(()=>{
+//     getAllStudentNoPayed()
+//     .then((res)=> {
+//         console.log(res.data,"students no payed")
+//         setStudentData(res.data)
+//     })
+// },[])
 
   return (
     <div className="dashboard row">
@@ -220,10 +230,10 @@ function DashBoard() {
                 />
 
                 <IonCol>
-                  <p>
-                    {item.firstName} {item.lastName}
+                  {/* <p> */}
+                    {/* {item.firstName} {item.lastName}
                   </p>
-                  <p className="subTitle">{item.class}</p>
+                  <p className="subTitle">{item.class}</p> */}
                 </IonCol>
               </IonRow>
             ))}
@@ -245,7 +255,7 @@ function DashBoard() {
                 <img src={url} alt="logo" />
                 <IonCol className="pt-2">
                   <p>
-                    {item.firstName} {item.lastName}
+                    {/* {item.firstName} {item.lastName} */}
                   </p>
                 </IonCol>
               </IonRow>

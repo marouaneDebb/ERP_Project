@@ -41,7 +41,7 @@ const ServiceItem: React.FC <props>= ({ item }) => {
             
             <div>
               <p className="service_title">{item.price} DH</p>
-              <p className="lighter_text">/ {item.preodicity} month</p>
+              <p className="lighter_text">/ {item.pereodicity} month</p>
             </div>
           </div>
 
