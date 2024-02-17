@@ -141,7 +141,7 @@ function ServiceToStudent(){
                             </div>
                         </IonRow>
                         <ListWithPagination<ServiceType>
-                              itemsPerPage={3}
+                              itemsPerPage={4}
                               data={toChoose}
                               renderListItem={(service) => (
                                 <IonRow className="row">

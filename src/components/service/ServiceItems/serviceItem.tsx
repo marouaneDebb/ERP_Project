@@ -11,7 +11,7 @@ import {
 import "./serviceItem.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { ellipsisHorizontal, ellipsisVertical } from "ionicons/icons";
+import { ellipsisHorizontal, ellipsisVertical, trash } from "ionicons/icons";
 import ServiceType from "../../../Models/ServiceType";
 
 interface props {
@@ -22,9 +22,19 @@ const ServiceItem: React.FC <props>= ({ item }) => {
   const img="https://img.freepik.com/free-photo/front-view-smiley-people-holding-rackets_23-2149733032.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396";
   const TotalOrders=166;
   const intrest=26
+  const [openState, setOpenState] = useState<boolean >(false);
+
+  const toggleOpen = () => {
+    setOpenState(!openState);
+  };
+
+  const toggleClose = () => {
+    setOpenState(false);
+  };
+
   return (
        
-        <div className="service_item row">
+        <div className="service_item row" onMouseLeave={(toggleClose)}>
           <hr className="asttir"></hr>
           <div className="service_name col-3">
             <div className="row">
@@ -41,7 +51,7 @@ const ServiceItem: React.FC <props>= ({ item }) => {
             
             <div>
               <p className="service_title">{item.price} DH</p>
-              <p className="lighter_text">/ {item.preodicity} month</p>
+              <p className="lighter_text">/ {item.pereodicity} month</p>
             </div>
           </div>
 
@@ -106,9 +116,20 @@ const ServiceItem: React.FC <props>= ({ item }) => {
             </div>
           </div>
           <div className="service_more col-1">
-            <p className="more">...</p>
+            <p className="more" onClick={(toggleOpen)}>...</p>
           </div>
+
+          {openState && (
+            <div className="dropdownDiv" style={{ zIndex: 100, position: 'absolute' }}>
+              
+                <ul className="flex flex-col gap-4">
+                  <li className="pt-3"><IonIcon icon={trash}></IonIcon> delete</li>
+                </ul>
+            </div>
+          )}
+
         </div>
+
 
   );
 };

@@ -66,14 +66,27 @@ const Service: React.FC = () => {
   const [selectedOption2, setSelectedOption2] = useState("");
   const [state, setState]=useState(true);
   const [services,setServices]=useState<ServiceType[]>([])
-  
+  const [searchValue, setSearchValue]=useState()
   useEffect(()=>{
     getAllServices().then((res) =>{
-      console.log(res.data)
       setServices(res.data)
     })
   },[])
   const [items,setItems]=useState<ServiceType[]>(services)
+  
+  useEffect(()=>{
+    setItems(services)
+  },[services])
+
+  const handleChangeValue=(e:any)=>{
+    const value= e.target.value;
+    setSearchValue(value);
+    if (value){
+      setItems(services.filter(s=>s.name.toLowerCase().includes(value.toLowerCase())));
+    }else{
+      setItems(services);
+    }
+  }
   
   const handleClick = () => {
     setSelectedOption("defult");
@@ -106,7 +119,7 @@ const Service: React.FC = () => {
           <div className="service_title row">
             <div className="service_title_text col-3">Services</div>
             <div className="Service_seach col-6">
-              <IonSearchbar className="Service_search_bar"></IonSearchbar>
+              <IonSearchbar className="Service_search_bar" value={searchValue} onIonInput={(handleChangeValue)}></IonSearchbar>
             </div>
             <div className="service_title_left col-3">
               <Notification_setting />
@@ -124,8 +137,8 @@ const Service: React.FC = () => {
             </IonButton>}
           </div>
           {state?
-          (<div className="service_content row">
-            <div className="service_container row">
+          (<div className="service_content row rounded">
+            <div className="service_container row rounded">
               <div className="container_title col-9">service Menu</div>
               <div className="container_menu col-3">
                 <div className="menu row">
@@ -134,7 +147,7 @@ const Service: React.FC = () => {
                     id={selectedOption}
                     onClick={handleClick}
                   >
-                    All services
+                    All
                   </div>
                   <div
                     className="service_options col-4"
