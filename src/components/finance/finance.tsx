@@ -48,9 +48,9 @@ function Finance(){
 
     return(
         <div className="finance_bg">
-            <IonRow>
+            <div className="row">
                 <SideMenu active_Row={"row_14"}/>
-                <IonCol className="container">
+                <IonCol className="container col-10">
                     <IonRow className="finance_head ">
                         <IonCol><h3>Finance</h3></IonCol>
                         <IonCol><IonSearchbar className="search_bar"></IonSearchbar></IonCol>
@@ -150,7 +150,7 @@ function Finance(){
                         </IonCol>
                     </IonRow>
                 </IonCol>
-            </IonRow>
+            </div>
         </div>
     )
 }

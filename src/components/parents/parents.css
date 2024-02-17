@@ -55,7 +55,7 @@ color: #4D44B5;
 } */
 
 .parent-container {
-  max-height: 56%; /* Set a maximum height for the container */
+  max-height:80vh; /* Set a maximum height for the container */
   overflow-y: auto; /* Enable vertical scrolling */
   overflow-x: hidden;
 }

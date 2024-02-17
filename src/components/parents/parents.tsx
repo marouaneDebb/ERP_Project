@@ -21,8 +21,23 @@ import ParentType from "../../Models/parentType";
 
 const Parents: React.FC = () => {
   const [currentParent, setCurrentParent]=useState<ParentType| undefined>();
-  const [parents,setParents] = useState([])
+  const [parents,setParents] = useState<ParentType[]>([])
+  const [items,setItems] = useState<ParentType[]>([])
+  const [searchValue, setSearchValue]=useState()
   
+
+  const handleSearchChange = (event:any) => {
+    const value=event.target.value;
+    setSearchValue(value)
+    if (value){
+      setItems(parents.filter(p=>p.lastName.toUpperCase().includes(value.toUpperCase()) || p.firstName.toUpperCase().includes(value.toUpperCase())))
+    }
+    else{setItems(parents)}
+  };
+
+  useEffect(()=>{
+    setItems(parents)
+  },[parents])
 
   useEffect(()=>{
     getAllParent()
@@ -36,9 +51,6 @@ const Parents: React.FC = () => {
     setState(!state);
   }
 
-  const newPa=()=>{
-    console.log(parents)
-  }
 
   return (
     <div className="parents_page">
@@ -53,7 +65,7 @@ const Parents: React.FC = () => {
           </div>
           <div className="parent_search row">
             <div className="seach col-6">
-              <IonSearchbar className="search_bar"></IonSearchbar>
+              <IonSearchbar className="search_bar" value={searchValue} onIonInput={(handleSearchChange)}></IonSearchbar>
             </div>
             <div className="options col-6">
               <IonButton shape="round" className="text_2" href="/ERP_Project/parents">
@@ -88,7 +100,7 @@ const Parents: React.FC = () => {
           {currentParent?
           <ParentDetails parent={currentParent}/>:
           <div className="parent-container">
-            <Parent items={parents} setCurrentParent={setCurrentParent} />
+            <Parent items={items} setCurrentParent={setCurrentParent} />
           </div>}</>:<NewParent/>}
         </div>
       </div>
