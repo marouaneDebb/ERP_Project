@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SideMenu from "../sidemenu/sidemenu";
 import Notification_setting from "../notification_setting";
 import {IonCol, IonRow, IonSearchbar} from '@ionic/react';
@@ -7,13 +7,20 @@ import './finance.css'
 import ListWithPagination from "../page/pages";
 import ListComponent from "../dashboard/ListComponent";
 import ShowExpense from "../schoolExpense/expense";
+import { getAllStudentNoPayed } from '../../Services/FinanceService';
+import axios from 'axios';
+import { URL_BACK } from '../../Services/StrudentService';
 
 interface Student {
-    firstName: string;
-    lastName: string;
     id:number;
-    class: string;
-    sold:number;
+    firstName:String;
+        lastName:String;
+        address:String;
+        classs:String;
+        phone:String;
+        dateNaissance:Date;
+        parent:String;
+        sold:number
   }
 interface Expense {
     id:number;
@@ -23,18 +30,34 @@ interface Expense {
     status:string;
   }
 
-function Finance(){
+  
+  function Finance(){
+    
+    useEffect(()=>{
+        getAllStudentNoPayed()
+        .then((res)=> {
+            console.log(res.data,"students no payed")
+            setStudents(res.data)
+            console.log(students,"studentdata")
+        })
+    },[])
+
+    
+    const [students, setStudents] = useState<Map<Student,number>>(new Map);
+    
+    
     let percentParent=-0.2;
     let percentStudent=2;
     let percentExpense=13;
-    const studentData: Student[] = [{firstName:'youssef',lastName:'oudourouch',id:22301035,class:'2A',sold:58},
-    {firstName:'younss',lastName:'JAMALDDIN',id:2230102,class:'2A',sold:654},
-    {firstName:'ali',lastName:'LHRCHI',id:223010244,class:'2A',sold:959},
-    {firstName:'brahim',lastName:'diroch',id:22301062,class:'3A',sold:654},
-    {firstName:'youns',lastName:'JAMIN',id:223330102,class:'2A',sold:654},
-    {firstName:'khadija',lastName:'ddaoudy',id:2234412,class:'2A',sold:654},
-    {firstName:'brahim',lastName:'diroch',id:2231062,class:'3A',sold:654}
-    ];
+    const[studentData,setStudentData] = useState([])
+    // const studentData: Student[] = [{firstName:'youssef',lastName:'oudourouch',id:22301035,class:'2A',sold:58},
+    // {firstName:'younss',lastName:'JAMALDDIN',id:2230102,class:'2A',sold:654},
+    // {firstName:'ali',lastName:'LHRCHI',id:223010244,class:'2A',sold:959},
+    // {firstName:'brahim',lastName:'diroch',id:22301062,class:'3A',sold:654},
+    // {firstName:'youns',lastName:'JAMIN',id:223330102,class:'2A',sold:654},
+    // {firstName:'khadija',lastName:'ddaoudy',id:2234412,class:'2A',sold:654},
+    // {firstName:'brahim',lastName:'diroch',id:2231062,class:'3A',sold:654}
+    // ];
 
     const expenseData: Expense[]=[{id:7372282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Pending"},
     {id:7393282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Canceled"},
@@ -137,6 +160,10 @@ function Finance(){
                                     <ListComponent key={student1.id} data={student1} />
                                 )}
                                 />
+                              <div>
+      
+      
+    </div>
                         </div>
                         <IonCol className='third_row third_rw2 rounded'>
                             <h5>School Expense</h5>
