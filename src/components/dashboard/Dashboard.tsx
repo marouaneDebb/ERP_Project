@@ -6,93 +6,42 @@ import {
   IonRow,
   IonIcon,
   IonButton,
-  IonInput,
-  IonSearchbar,
-  IonFabButton,
-  IonFabList,
-  IonFab,
+  IonSearchbar
 } from "@ionic/react";
-import { search, addCircle, chevronDownCircle, colorPalette, globe, document } from "ionicons/icons";
+import { addCircle } from "ionicons/icons";
 import Notification_setting from "../notification_setting";
 import SideMenu from "../sidemenu/sidemenu";
 import ListWithPagination from "../page/pages";
 import ListComponent from "./ListComponent";
-import { getAllStudentNoPayed } from "../../Services/FinanceService";
+import { getAllParent } from "../../Services/ParentService";
+import StudentType from "../../Models/studentType";
+import ParentType from "../../Models/parentType";
+import { getStudents } from "../../Services/StrudentService";
 
-interface Student {
-  firstName: string;
-  lastName: string;
-  id: number;
-  class: string;
-  sold: number;
-}
+
+
+
+
 
 function DashBoard() {
   const event = 43;
-  let parent = 732;
-  let student = 967;
   let url =
     "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?w=740&t=st=1702236437~exp=1702237037~hmac=44b4655423a2cb3bb4fa6f54d3828c164cc373a3d35fec1ad38416641b45421c";
-  // const studentData: Student[] = [
-  //   {
-  //     firstName: "youssef",
-  //     lastName: "oudourouch",
-  //     id: 22301035,
-  //     class: "2A",
-  //     sold: 58,
-  //   },
-  //   {
-  //     firstName: "younss",
-  //     lastName: "JAMALDDIN",
-  //     id: 2230102,
-  //     class: "2A",
-  //     sold: 654,
-  //   },
-  //   {
-  //     firstName: "ali",
-  //     lastName: "LHRCHI",
-  //     id: 223010244,
-  //     class: "2A",
-  //     sold: 959,
-  //   },
-  //   {
-  //     firstName: "brahim",
-  //     lastName: "diroch",
-  //     id: 22301062,
-  //     class: "3A",
-  //     sold: 654,
-  //   },
-  //   {
-  //     firstName: "youns",
-  //     lastName: "JAMIN",
-  //     id: 223330102,
-  //     class: "2A",
-  //     sold: 654,
-  //   },
-  //   {
-  //     firstName: "khadija",
-  //     lastName: "ddaoudy",
-  //     id: 2234412,
-  //     class: "2A",
-  //     sold: 654,
-  //   },
-  //   {
-  //     firstName: "brahim",
-  //     lastName: "diroch",
-  //     id: 2231062,
-  //     class: "3A",
-  //     sold: 654,
-  //   },
-  // ];
-
-  const[studentData,setStudentData] = useState([])
-//   useEffect(()=>{
-//     getAllStudentNoPayed()
-//     .then((res)=> {
-//         console.log(res.data,"students no payed")
-//         setStudentData(res.data)
-//     })
-// },[])
+  
+  const [studentData,setStudentData]=useState([])
+  const [students,setStudents] = useState<StudentType[]>([])
+  const [parents,setParents] = useState<ParentType[]>([])
+  useEffect(()=>{
+      getAllParent()
+      .then((res)=>{
+        setParents(res.data)
+      })
+      getStudents()
+      .then((res)=>{
+        setStudents(res.data)
+      })
+    },[]);
+    
 
   return (
     <div className="dashboard row">
@@ -136,7 +85,7 @@ function DashBoard() {
 
               <IonCol>
                 <p>Students</p>
-                <h4>{student}</h4>
+                <h4>{students.length}</h4>
               </IonCol>
             </IonRow>
             <IonRow className="col-4">
@@ -171,7 +120,7 @@ function DashBoard() {
 
               <IonCol>
                 <p>Parents</p>
-                <h4>{parent}</h4>
+                <h4>{parents.length}</h4>
               </IonCol>
             </IonRow>
             <IonRow className="col-4">
@@ -199,11 +148,11 @@ function DashBoard() {
 
           <div className="third_row rounded">
             <h5>Unpaid Student Intuition</h5>
-            <ListWithPagination<Student>
+            <ListWithPagination<StudentType>
               itemsPerPage={3}
               data={studentData}
               renderListItem={(student1) => (
-                <ListComponent key={student1.id} data={student1} />
+                <ListComponent  data={student1} />
               )}
             />
           </div>
@@ -215,25 +164,25 @@ function DashBoard() {
           <IonRow className="recent_title">
             <IonCol className="col-lg-9">
               <h6> Recent Students</h6>
-              <p className="subTitle">you have {student} students</p>
+              <p className="subTitle">you have {students.length} students</p>
             </IonCol>
             <IonCol className="col-lg-3">
               <IonIcon className="Add" icon={addCircle}></IonIcon>
             </IonCol>
           </IonRow>
           <div className="recent">
-            {studentData.slice(0, 3).map((item, index) => (
-              <IonRow key={index}>
+            {students.slice(0, 3).map((item) => (
+              <IonRow >
                 <img
                   src="https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?w=740&t=st=1702236437~exp=1702237037~hmac=44b4655423a2cb3bb4fa6f54d3828c164cc373a3d35fec1ad38416641b45421c"
                   alt="logo"
                 />
 
                 <IonCol>
-                  {/* <p> */}
-                    {/* {item.firstName} {item.lastName}
+                  <p> 
+                    {item.firstName} {item.lastName}
                   </p>
-                  <p className="subTitle">{item.class}</p> */}
+                  <p className="subTitle">{item.classs} year</p> 
                 </IonCol>
               </IonRow>
             ))}
@@ -243,19 +192,19 @@ function DashBoard() {
           <IonRow className="recent_title">
             <IonCol className="col-lg-9">
               <h6> Recent Parents</h6>
-              <p className="subTitle">you have {parent} parents</p>
+              <p className="subTitle">you have {parents.length} parents</p>
             </IonCol>
             <IonCol className="col-lg-3">
               <IonIcon className="Add" icon={addCircle}></IonIcon>
             </IonCol>
           </IonRow>
           <div className="recent">
-            {studentData.slice(0, 3).map((item, index) => (
-              <IonRow className="pt-4" key={index}>
+            {parents.slice(0, 3).map((item) => (
+              <IonRow className="pt-4">
                 <img src={url} alt="logo" />
                 <IonCol className="pt-2">
                   <p>
-                    {/* {item.firstName} {item.lastName} */}
+                    {item.firstName} {item.lastName}
                   </p>
                 </IonCol>
               </IonRow>
