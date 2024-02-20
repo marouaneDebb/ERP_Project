@@ -10,18 +10,9 @@ import ShowExpense from "../schoolExpense/expense";
 import { getAllStudentNoPayed } from '../../Services/FinanceService';
 import axios from 'axios';
 import { URL_BACK } from '../../Services/StrudentService';
+import StudentType from '../../Models/studentType';
 
-interface Student {
-    id:number;
-    firstName:String;
-        lastName:String;
-        address:String;
-        classs:String;
-        phone:String;
-        dateNaissance:Date;
-        parent:String;
-        sold:number
-  }
+
 interface Expense {
     id:number;
     date:string;
@@ -43,14 +34,14 @@ interface Expense {
     },[])
 
     
-    const [students, setStudents] = useState<Map<Student,number>>(new Map);
+    const [students, setStudents] = useState<Map<StudentType,number>>(new Map);
     
     
     let percentParent=-0.2;
     let percentStudent=2;
     let percentExpense=13;
     const[studentData,setStudentData] = useState([])
-    // const studentData: Student[] = [{firstName:'youssef',lastName:'oudourouch',id:22301035,class:'2A',sold:58},
+    // const studentData: StudentType[] = [{firstName:'youssef',lastName:'oudourouch',id:22301035,class:'2A',sold:58},
     // {firstName:'younss',lastName:'JAMALDDIN',id:2230102,class:'2A',sold:654},
     // {firstName:'ali',lastName:'LHRCHI',id:223010244,class:'2A',sold:959},
     // {firstName:'brahim',lastName:'diroch',id:22301062,class:'3A',sold:654},
@@ -153,7 +144,7 @@ interface Expense {
                     <IonRow className="container">
                         <div className='third_row rounded col-7'>
                             <h5>Unpaid Student Intuition</h5>
-                            <ListWithPagination<Student>
+                            <ListWithPagination<StudentType>
                                 itemsPerPage={4}
                                 data={studentData}
                                 renderListItem={(student1) => (

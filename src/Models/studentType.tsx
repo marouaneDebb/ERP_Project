@@ -1,6 +1,7 @@
 import ParentType from "./parentType";
 
 export default interface StudentType{
+        id:number
         firstName:String;
         lastName:String;
         address:String;
