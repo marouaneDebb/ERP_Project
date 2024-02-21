@@ -59,26 +59,21 @@
     cursor: pointer;
 }
 .dropdownDiv{
-    right: 3rem;
+    left: 2rem;
     top: 2rem;
-    border: 1px solid gray;
+    border:solid 1px grey;
     border-radius: 12px;
-    width: 80%;
-    height: 10%;
-    background-color: #f5f6fa;
-    margin-left: 15%;
+    width: 157px;
+    background-color: white;
     cursor: pointer;
-
 }
-ul.flex.flex-col.gap-4 {
-    padding: 0;
-    padding-top: 1%;
-    text-align: center; /* Center text */
-    align-items: center;
-  }
+li:hover{
+    color:grey
+}
+
 ul.flex.flex-col.gap-4 li {
-    list-style: none; /* Remove bullet points */
-    text-decoration: none; /* Remove text decoration */
-    font-size: 14px; /* Set smaller font size */
+    list-style: none; 
+    text-decoration: none; 
+    font-size: 14px; 
 
   }

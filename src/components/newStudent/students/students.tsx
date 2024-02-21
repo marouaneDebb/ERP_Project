@@ -19,8 +19,19 @@ import StudentDetails from "../detailStudent/destailStudent";
 
 const Students: React.FC = () => {
   const [currentStudent, setCurrentSarent]=useState<StudentType| undefined>();
-
   const [students,setStudent] = useState<StudentType[]>([])
+  const [items,setItems] = useState<StudentType[]>([])
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSearchChange = (event:any) => {
+    const value=event.target.value;
+    setSearchValue(value)
+    if (value){
+      setItems(students.filter(s=>s.lastName.toUpperCase().includes(value.toUpperCase()) || s.firstName.toUpperCase().includes(value.toUpperCase())))
+    }
+    else{setItems(students)}
+  };
+
   useEffect(()=>{
 
     getStudentsByParentId("PA238948").then((rest)=>{
@@ -33,6 +44,11 @@ const Students: React.FC = () => {
   }
   ,[]);
   
+  useEffect(()=>{
+    setItems(students)
+  },[students])
+
+
   
   const[state, setState]=useState(true);
   const newStudent=()=>{
@@ -50,7 +66,7 @@ const Students: React.FC = () => {
           </div>
           <div className="parent_search row">
             <div className="seach col-6">
-              <IonSearchbar className="search_bar"></IonSearchbar>
+              <IonSearchbar className="search_bar" value={searchValue} onIonInput={(handleSearchChange)}></IonSearchbar>
             </div>
             <div className="options col-6">
               <IonButton shape="round" className="text_2" href="/ERP_Project/students">
@@ -85,7 +101,7 @@ const Students: React.FC = () => {
           {currentStudent?
             <StudentDetails student={currentStudent}/>:
           <div className="parent-container">
-            <Student items={students} setCurrentStudent={setCurrentSarent} />
+            <Student items={items} setCurrentStudent={setCurrentSarent} />
           </div>}</>: 
           <NewStudent/>}
         </div>
