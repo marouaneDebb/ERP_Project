@@ -12,7 +12,7 @@ import SideMenu from "../../sidemenu/sidemenu";
 import Notification_setting from "../../notification_setting";
 import Student from "../student/Student";
 import NewStudent from "../NewStudent";
-import { getStudents } from "../../../Services/StrudentService";
+import { getStudents, getStudentsByParentId } from "../../../Services/StrudentService";
 import StudentType from "../../../Models/studentType";
 import StudentDetails from "../detailStudent/destailStudent";
 
@@ -22,11 +22,16 @@ const Students: React.FC = () => {
 
   const [students,setStudent] = useState<StudentType[]>([])
   useEffect(()=>{
-    getStudents()
-    .then((res)=>{
-      setStudent(res.data)
+
+    getStudentsByParentId("PA238948").then((rest)=>{
+      console.log(rest,"stuParById")
     })
-  },[]);
+  //   getStudents()
+  //   .then((res)=>{
+  //     setStudent(res.data)
+  //   })
+  }
+  ,[]);
   
   
   const[state, setState]=useState(true);
