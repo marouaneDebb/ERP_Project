@@ -312,10 +312,10 @@ function NewService() {
                   value={type}
                   onIonChange={handleTypeChange}
                 >
-                  <IonRadio className="col-4 mx-5" value="obligatory">
+                  <IonRadio className="col-4 mx-5" value="OBLIGATORY">
                     Obligatory
                   </IonRadio>
-                  <IonRadio className="col-4" value="optional">
+                  <IonRadio className="col-4" value="OPTIONAL">
                     Optional
                   </IonRadio>
                 </IonRadioGroup>

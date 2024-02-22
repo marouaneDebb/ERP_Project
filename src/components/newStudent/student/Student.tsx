@@ -11,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import StudentType from "../../../Models/studentType";
 import { trash } from "ionicons/icons";
+import { deleteStudentById } from "../../../Services/StrudentService";
 
 
 interface props {
@@ -39,6 +40,15 @@ const Student: React.FC <props>= ({ items, setCurrentStudent }) => {
     setCurrentStudent(student);
   }
 
+  const deleteStudent =(id:any) =>{
+    deleteStudentById(id).then((res)=>{
+      window.location.reload();
+    }).catch((error) => {
+      console.error("Error deleting student:", error);
+    });
+  }
+
+ 
   return (
 
     <div className="row">
@@ -72,7 +82,7 @@ const Student: React.FC <props>= ({ items, setCurrentStudent }) => {
             <div className="dropdownDiv" style={{ zIndex: 100, position: 'absolute' }}>
               
                 <ul className="flex flex-col gap-4">
-                  <li className="pt-3"><IonIcon icon={trash}></IonIcon> delete</li>
+                  <li className="pt-3" onClick={() => deleteStudent(item.id)} ><IonIcon icon={trash}></IonIcon> delete</li>
                 </ul>
             </div>
           )}
