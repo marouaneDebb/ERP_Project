@@ -34,9 +34,9 @@ const Students: React.FC = () => {
 
   useEffect(()=>{
 
-    // getStudentsByParentId("PA238948").then((rest)=>{
-    //   console.log(rest,"stuParById")
-    // })
+    //  getStudentsByParentId("PA238948").then((rest)=>{
+    //    console.log(rest,"stuParById")
+    //  })
     getStudents()
     .then((res)=>{
       setStudent(res.data)
