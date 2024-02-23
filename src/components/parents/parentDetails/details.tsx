@@ -1,14 +1,30 @@
 
-import { IonCol, IonRow } from "@ionic/react";
+import { IonCol, IonIcon, IonRow } from "@ionic/react";
 import "./details.css"
 import Student from "../../newStudent/student/Student";
 import ParentType from "../../../Models/parentType";
+import { add } from "ionicons/icons";
+import { useEffect, useState } from "react";
+import { getStudentsByParentId } from "../../../Services/StrudentService";
+import ServiceType from "../../../Models/ServiceType";
+import StudentType from "../../../Models/studentType";
 
 interface props{
     parent:ParentType;
 }
+
+interface PayementType{
+    id:number;
+    dateInscription:Date;
+    payer:boolean;
+    service:ServiceType;
+    eleve:StudentType;
+}
+
 const ParentDetails: React.FC<props>=({parent})=>{
-    let items = [
+    const [items, setItems]=useState<StudentType[]>([]);
+    const [currentStudent, setCurrentStudent]=useState<StudentType>();
+    /*let items = [
         {
           id:1,
           firstname: "marouane",
@@ -26,16 +42,14 @@ const ParentDetails: React.FC<props>=({parent})=>{
           firstname: "marouane",
           lastname: "debbagh",
           img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-        }];
-    // const parent={
-    //     id:13,
-    //     firstname: "marouane",
-    //     lastname: "debbagh",
-    //     telephone:"0615351655",
-    //     address:"Ibn Sina Agdal, Rabat",
-    //     email:"email@gmail.com",
-    //     img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-    //   }
+        }];*/
+    useEffect(()=>{
+        getStudentsByParentId(parent.cin).then((rest)=>{
+            setItems(rest.data);
+            console.log(rest,"stuParById")
+          })
+    },[])
+
     return(
         <div className="medSection1">
             <div className="parentInfo ">
@@ -49,8 +63,9 @@ const ParentDetails: React.FC<props>=({parent})=>{
                         </svg>
                     </IonRow>
                     <IonRow className="mx-4">
-                        <h5> {parent.firstName} {parent.lastName}</h5>
+                        <h5> {parent.firstName} {parent.lastName}</h5><br/>
                     </IonRow>
+                    <p className="subTitle mx-4">Parent</p>
                     <IonRow className="m-4">
                         <IonCol>
                             <svg className="mx-2" width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,8 +91,10 @@ const ParentDetails: React.FC<props>=({parent})=>{
                     </IonRow>
                     <h5 className="mx-4">Children</h5>
                     <div className="parent-container mx-4">
-                        <Student items={items} />
-
+                        <Student items={items} setCurrentStudent={setCurrentStudent} />
+                        <div className="cart col-lg-2 col-md-4 col-sm-6">
+                            <div><IonIcon icon={add}></IonIcon>Add new child</div>
+                        </div>
                     </div>
             </div>
 

@@ -22,4 +22,7 @@
 }
 .medSection1{
     margin-right: 2%;
+    overflow-y: scroll;
+    overflow-x: auto;
+    max-height: 80vh;
 }

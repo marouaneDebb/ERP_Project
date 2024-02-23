@@ -72,8 +72,8 @@
     align-items: flex-end;
     justify-content: flex-end;
   }
-  .service_content {
-    max-height: 70%; /* Set a maximum height for the container */
-    overflow-y: auto; /* Enable vertical scrolling */
+ .service_content {
+    max-height: 80vh;
+    overflow-y: auto; 
     overflow-x: hidden;
   }

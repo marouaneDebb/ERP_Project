@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { IonApp, IonButton, IonCol, IonRow } from "@ionic/react";
+import { IonApp, IonButton, IonCol, IonIcon, IonRow } from "@ionic/react";
 import "./parent.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useHistory } from "react-router";
 import ParentType from "../../../Models/parentType";
+import { trash } from "ionicons/icons";
 
 
 interface props {
@@ -17,8 +18,12 @@ const Parent: React.FC<props> = ({ items, setCurrentParent }) => {
 
   const toggleOpen = (id: number) => {
     setOpenStates((prev) => ({
-      ...prev,
-      [id]: !prev[id] // toggle the state for the given id
+      [id]: !prev[id] 
+    }));
+  };
+  const toggleClose = (id: number) => {
+    setOpenStates((prev) => ({
+      [id]: false
     }));
   };
 
@@ -37,9 +42,9 @@ const Parent: React.FC<props> = ({ items, setCurrentParent }) => {
   const img="https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph"
 
   return (
-    <div className="row">
+    <div className="row" >
       {items.map((item, index) => (
-        <div className="cart col-lg-2 col-md-4 col-sm-6" key={item.cin}>
+        <div className="cart col-lg-2 col-md-4 col-sm-6" key={item.cin} onMouseLeave={()=>toggleClose(index)}>
           <div className="horizontal">
             <svg
               width="24"
@@ -56,12 +61,13 @@ const Parent: React.FC<props> = ({ items, setCurrentParent }) => {
             </svg>
           </div>
           {openStates[index] && (
-            <div className="dropdownDiv">
-              <div className="flex flex-col dropdown">
+            <div className="dropdownDiv" style={{ zIndex: 100, position: 'absolute' }}>
+              
                 <ul className="flex flex-col gap-4">
-                  <li onClick={() => handleRowClick()}>make payment</li>
+                  <li onClick={() => handleRowClick()} className="py-1">make payment</li>
+                  <li className="py-1">update</li>
+                  <li className="py-1"><IonIcon icon={trash}></IonIcon> delete</li>
                 </ul>
-              </div>
             </div>
           )}
 
