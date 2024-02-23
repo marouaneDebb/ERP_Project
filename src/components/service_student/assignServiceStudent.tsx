@@ -105,7 +105,7 @@ function ServiceToStudent(){
       
       return(
         <div className="bgroundpayment row">
-          <SideMenu active_Row={"row_14"}/>
+          <SideMenu active_Row={"row_12"}/>
           <div className="medSection col-10">  
             <div className="col-12 midle1 p-3">
                   <div className="service_title row">

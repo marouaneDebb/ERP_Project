@@ -3,11 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './dashboard.css';
 import { IonCol, IonRow} from '@ionic/react';
 import StudentType from '../../Models/studentType';
+import ServiceType from '../../Models/ServiceType';
 
 
-  
+
   interface ListComponentProps {
     data: StudentType;
+    
   }
   
   const ListComponent: React.FC<ListComponentProps> = ({data }) => {

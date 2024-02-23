@@ -1,3 +1,4 @@
+import ServiceStateType from "./ServiceStateType";
 import ParentType from "./parentType";
 
 export default interface StudentType{
@@ -10,4 +11,5 @@ export default interface StudentType{
         dateNaissance:Date;
         parent:String;
         img:String;
+        etatServices:ServiceStateType[];
 }

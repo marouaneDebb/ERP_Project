@@ -2,6 +2,7 @@ import { IonCol, IonFab, IonFabButton, IonIcon, IonRow } from "@ionic/react";
 import ServiceItem from "../../service/ServiceItems/serviceItem";
 import StudentType from "../../../Models/studentType";
 import { add } from "ionicons/icons";
+import { useEffect } from "react";
 
 
 interface props{
@@ -9,6 +10,7 @@ interface props{
 }
 
 const StudentDetails: React.FC<props>=({student})=>{  
+    
     
     const items=[
         {
@@ -101,9 +103,11 @@ const StudentDetails: React.FC<props>=({student})=>{
                     </IonCol>
                 </IonRow>
                 <div className="parent-container mx-4">
-                    {items.map((item)=>
-                    <ServiceItem item={item} />)}
-
+                    {student.etatServices.map((etat) =>(
+                        
+                            <ServiceItem  item={etat.service} />
+                        
+                    ))}
                 </div>
         </div>
 

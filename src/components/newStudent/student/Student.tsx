@@ -24,6 +24,12 @@ const   img= "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-cros
 const Student: React.FC <props>= ({ items, setCurrentStudent }) => {
   const [openStates, setOpenStates] = useState<{ [key: number]: boolean }>({});
 
+  // useEffect(()=>{
+    
+  //   console.log(items[0].etatServices[0].dateInscription)
+  // })
+
+
   const toggleOpen = (id: number) => {
     setOpenStates((prev) => ({
       [id]: !prev[id] // toggle the state for the given id
@@ -32,7 +38,7 @@ const Student: React.FC <props>= ({ items, setCurrentStudent }) => {
 
   const toggleClose = (id: number) => {
     setOpenStates((prev) => ({
-      [id]: false // toggle the state for the given id
+      [id]: false 
     }));
   };
 

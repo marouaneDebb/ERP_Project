@@ -119,14 +119,14 @@ const ServiceItem: React.FC <props>= ({ item }) => {
             <p className="more" onClick={(toggleOpen)}>...</p>
           </div>
 
-          {openState && (
+          {openState && 
             <div className="dropdownDiv" style={{ zIndex: 100, position: 'absolute' }}>
               
                 <ul className="flex flex-col gap-4">
                   <li className="pt-3"><IonIcon icon={trash}></IonIcon> delete</li>
                 </ul>
             </div>
-          )}
+          }
 
         </div>
 

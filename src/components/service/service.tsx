@@ -21,44 +21,6 @@ import { getAllServices } from "../../Services/ServiceService";
 const Service: React.FC = () => {
 
   
-  // const services=[
-  //   {
-  //     name: "Product 1",
-  //     start: new Date("2024-02-12"),
-  //     description: "Description of Product 1",
-  //     pereodicity: 1,
-  //     price: 100,
-  //     type: "Optional",
-  //     discount: []
-  //   },
-  //   {
-  //     name: "Product 2",
-  //     start: new Date("2024-02-13"),
-  //     description: "Description of Product 2",
-  //     pereodicity: 2,
-  //     price: 200,
-  //     type: "Optional",
-  //     discount: []
-  //   },
-  //   {
-  //     name: "Product 3",
-  //     start: new Date("2024-01-12"),
-  //     description: "Description of Product 3",
-  //     pereodicity: 1,
-  //     price: 100,
-  //     type: "Obligatory",
-  //     discount: []
-  //   },
-  //   {
-  //     name: "Product 4",
-  //     start: new Date("2024-01-13"),
-  //     description: "Description of Product 4",
-  //     pereodicity: 2,
-  //     price: 200,
-  //     type: "Optional",
-  //     discount: []
-  //   },
-  // ];
 
   
   const [selectedOption, setSelectedOption] = useState("defult");
@@ -99,13 +61,13 @@ const Service: React.FC = () => {
     setSelectedOption("");
     setSelectedOption1("defult");
     setSelectedOption2("");
-    setItems(services.filter(s=>s.type==="optional"));
+    setItems(services.filter(s=>s.type==="OPTIONAL"));
   };
   const handleClick2 = () => {
     setSelectedOption("");
     setSelectedOption1("");
     setSelectedOption2("defult");
-    setItems(services.filter(s=>s.type==="obligatory"))
+    setItems(services.filter(s=>s.type==="OBLIGATORY"))
 
   };
   const newService=()=>{
