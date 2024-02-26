@@ -12,6 +12,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import StudentType from "../../../Models/studentType";
 import { trash } from "ionicons/icons";
 import { deleteStudentById } from "../../../Services/StrudentService";
+import { deleteStudentById } from "../../../Services/StrudentService";
 
 
 interface props {
