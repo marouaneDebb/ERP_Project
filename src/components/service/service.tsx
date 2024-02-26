@@ -18,10 +18,8 @@ import NewService from "./NewService";
 import ServiceType from "../../Models/ServiceType";
 import { getAllServices } from "../../Services/ServiceService";
 
+
 const Service: React.FC = () => {
-
-  
-
   
   const [selectedOption, setSelectedOption] = useState("defult");
   const [selectedOption1, setSelectedOption1] = useState("");

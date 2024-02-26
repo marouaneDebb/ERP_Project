@@ -5,13 +5,15 @@ import ListWithPagination from "../../page/pages";
 import ShowPayment from "./payment/payment";
 import "./payments.css"
 import { useEffect, useState } from "react";
-
+import StudentType from "../../../Models/studentType";
+import { getStudentsByParentId } from "../../../Services/StrudentService";
+import { useParams } from 'react-router-dom';
 
 interface Payment{
   id:number;
   name:String;
-  dateBegin: String;
-  dateEnd:String;
+  dateBegin: Date;
+  dateEnd:Date;
   childName:String;
   price: number;
   type: String;
@@ -19,15 +21,14 @@ interface Payment{
 
 
 function Payments(){
-  const toPay=[{id:1, name:"gym", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"ana",price:100, type:"Obligatory"},
-  {id:2, name:"transport", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"ana",price:100, type:"Optional"},
-  {id:3, name:"gym", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"howa",price:100, type:"Optional"},
-  {id:4, name:"transport", dateBegin:"12/03/2024",dateEnd:"12/04/2024",childName:"hia",price:100, type:"Obligatory"}];
-  
+  const [toPay,setToPay]=useState<Payment[]>([]);
   const [allChecked, setallChecked] = useState(false);
   const [prix, setPrix]=useState(0);
   const [selectedPayment,setSelectedPayment] = useState<Payment[]>([]);
-  
+  const [students,setStudents]=useState<StudentType[]>([]);
+  const [parentId, setParentId]=useState<String>(useParams().parentId);
+
+
   const updatePrice=()=>{
   let totalprice=0;
   selectedPayment.forEach(element => {
@@ -35,10 +36,17 @@ function Payments(){
   });
   setPrix(totalprice);
   }
+
     
   useEffect(()=>{
-    setSelectedPayment(toPay.filter(payment => payment.type === 'Obligatory'));
+    getStudentsByParentId(parentId).then((rest)=>{
+      setStudents(rest.data);
+    })
   },[]);
+
+  useEffect(()=>{
+    setSelectedPayment(toPay.filter(payment => payment.type === 'OBLIGATORY'));
+  },[toPay])
 
   useEffect(() => {
     updatePrice();
@@ -47,13 +55,32 @@ function Payments(){
     }
   }, [selectedPayment]);
 
+  useEffect(()=>{
+    const id=0;
+    students.map(student =>
+      student.etatServices.map(etatService => {
+        if(etatService.payer === false){
+          let startDate=etatService.dateInscription
+          toPay.push({childName:student.firstName,
+          dateBegin:startDate,
+          dateEnd:startDate,//.setMonth(startDate.getMonth() + etatService.service.pereodicity),
+          name:etatService.service.name,
+          price:etatService.service.price,
+          type:etatService.service.type,
+          id:id+1})
+
+        }
+  })
+    )
+  },[students])
+
     const selectAll=()=>{
       setallChecked(!allChecked);
       if(!allChecked){
        setSelectedPayment(toPay);
       }
       else{
-        setSelectedPayment(toPay.filter(payment => payment.type === 'Obligatory'));
+        setSelectedPayment(toPay.filter(payment => payment.type === 'OBLIGATORY'));
       }
       updatePrice();
       

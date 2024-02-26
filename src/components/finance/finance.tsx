@@ -7,11 +7,8 @@ import './finance.css'
 import ListWithPagination from "../page/pages";
 import ListComponent from "../dashboard/ListComponent";
 import ShowExpense from "../schoolExpense/expense";
-import { getAllStudentNoPayed } from '../../Services/FinanceService';
-import axios from 'axios';
-import { URL_BACK } from '../../Services/StrudentService';
 import StudentType from '../../Models/studentType';
-import ServiceType from '../../Models/ServiceType';
+import { getStudents } from '../../Services/StrudentService';
 
 
 interface Expense {
@@ -24,22 +21,28 @@ interface Expense {
 
   
   function Finance(){
-    
-    // useEffect(()=>{
-    //     getAllStudentNoPayed()
-    //     .then((res)=> {
-    //         console.log(res.data,"students no payed")
-    //     })
-    // },[])
 
-    
-    
-    
     let percentParent=-0.2;
     let percentStudent=2;
     let percentExpense=13;
-    const[studentData,setStudentData] = useState([])
+    const[studentData,setStudentData] = useState<StudentType[]>([])
+    const[students,setStudents] = useState<StudentType[]>([])
+    
+     useEffect(()=>{
+        getStudents()
+        .then((res)=> {
+            setStudents(res.data)
+        })
+    },[])
 
+
+    useEffect(()=>{
+    setStudentData(students.filter(student =>
+      student.etatServices.some(etatService => etatService.payer === false)
+    ))
+    },[students])
+    
+    
     const expenseData: Expense[]=[{id:7372282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Pending"},
     {id:7393282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Canceled"},
     {id:4372282,date:"02/12/2023",timing:"12:00",sold:3993.34,status:"Pending"},
@@ -143,8 +146,7 @@ interface Expense {
                                 />
                               <div>
       
-      
-    </div>
+       </div>
                         </div>
                         <IonCol className='third_row third_rw2 rounded'>
                             <h5>School Expense</h5>

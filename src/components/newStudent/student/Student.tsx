@@ -25,15 +25,9 @@ const   img= "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-cros
 const Student: React.FC <props>= ({ items, setCurrentStudent }) => {
   const [openStates, setOpenStates] = useState<{ [key: number]: boolean }>({});
 
-  // useEffect(()=>{
-    
-  //   console.log(items[0].etatServices[0].dateInscription)
-  // })
-
-
   const toggleOpen = (id: number) => {
     setOpenStates((prev) => ({
-      [id]: !prev[id] // toggle the state for the given id
+      [id]: !prev[id] 
     }));
   };
 
@@ -72,7 +66,7 @@ const Student: React.FC <props>= ({ items, setCurrentStudent }) => {
     <div className="row">
       {items.map((item, index) => (
       
-        <div className="cart col-lg-2 col-md-4 col-sm-6 child" onMouseLeave={()=>toggleClose(index)}>
+        <div className="cart col-lg-2 col-md-4 col-sm-6 child" key={item.id} onMouseLeave={()=>toggleClose(index)}>
           <div className="horizontal">
             <svg
               width="24"

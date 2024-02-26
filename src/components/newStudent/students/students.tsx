@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
-  IonApp,
   IonButton,
   IonIcon,
   IonSearchbar,
@@ -12,7 +11,7 @@ import SideMenu from "../../sidemenu/sidemenu";
 import Notification_setting from "../../notification_setting";
 import Student from "../student/Student";
 import NewStudent from "../NewStudent";
-import { getStudents, getStudentsByParentId } from "../../../Services/StrudentService";
+import { getStudents } from "../../../Services/StrudentService";
 import StudentType from "../../../Models/studentType";
 import StudentDetails from "../detailStudent/destailStudent";
 
@@ -33,10 +32,6 @@ const Students: React.FC = () => {
   };
 
   useEffect(()=>{
-
-    //  getStudentsByParentId("PA238948").then((rest)=>{
-    //    console.log(rest,"stuParById")
-    //  })
     getStudents()
     .then((res)=>{
       setStudent(res.data)

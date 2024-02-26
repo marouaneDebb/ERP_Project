@@ -33,9 +33,9 @@ const Parent: React.FC<props> = ({ items, setCurrentParent }) => {
   }
   const history = useHistory();
 
-  const handleRowClick = () => {
+  const handleRowClick = (cinParent:String) => {
     
-      history.push("/ERP_Project/pay");
+      history.push(`/ERP_Project/pay/${cinParent}`);
     
     
   };
@@ -75,7 +75,7 @@ const Parent: React.FC<props> = ({ items, setCurrentParent }) => {
             <div className="dropdownDiv" style={{ zIndex: 100, position: 'absolute' }}>
               
                 <ul className="flex flex-col gap-4">
-                  <li onClick={() => handleRowClick()} className="py-1">make payment</li>
+                  <li onClick={() => handleRowClick(item.cin)} className="py-1">make payment</li>
                   <li className="py-1">update</li>
                   <li className="py-1" onClick={()=> deleteParent(item.cin)}><IonIcon icon={trash}></IonIcon> delete</li>
                 </ul>
