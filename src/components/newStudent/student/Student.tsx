@@ -11,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import StudentType from "../../../Models/studentType";
 import { trash } from "ionicons/icons";
+import { deleteStudentById } from "../../../Services/StrudentService";
 
 
 interface props {
@@ -37,6 +38,26 @@ const Student: React.FC <props>= ({ items, setCurrentStudent }) => {
 
   function handlChange(student: StudentType) {
     setCurrentStudent(student);
+  }
+
+  const deleteStudent = (id:any) => {
+    console.log(id,"id")
+    
+    deleteStudentById(id)
+      .then(response => {
+        if (response) {
+          console.log('Élève supprimé avec succès');
+          window.location.reload();
+          // Mettre à jour l'interface utilisateur ou recharger la page si nécessaire
+        } else {
+          console.error('Erreur lors de la suppression de l\'élève');
+        }
+      })
+      .catch(error => console.error('Erreur lors de la suppression de l\'élève :', error));
+      
+      // console.log(res.data)
+      
+    
   }
 
   return (
@@ -72,7 +93,7 @@ const Student: React.FC <props>= ({ items, setCurrentStudent }) => {
             <div className="dropdownDiv" style={{ zIndex: 100, position: 'absolute' }}>
               
                 <ul className="flex flex-col gap-4">
-                  <li className="pt-3"><IonIcon icon={trash}></IonIcon> delete</li>
+                  <li className="pt-3" onClick={() => deleteStudent(item.id)}><IonIcon icon={trash}></IonIcon> delete</li>
                 </ul>
             </div>
           )}
