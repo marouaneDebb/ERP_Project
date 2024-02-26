@@ -9,3 +9,4 @@ export const getStudentsByParentId = (id:any) => axios(URL_STUDENT+"/parentid/"+
 export const deleteStudentById = (id:any) => axios.delete(URL_STUDENT+"/"+id)
 export const getStudentById=(id:any)=>axios(URL_STUDENT+"/"+id)
 
+

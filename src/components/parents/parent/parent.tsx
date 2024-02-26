@@ -6,6 +6,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useHistory } from "react-router";
 import ParentType from "../../../Models/parentType";
 import { trash } from "ionicons/icons";
+import { deleteParentById } from "../../../Services/ParentService";
 
 
 interface props {
@@ -39,6 +40,16 @@ const Parent: React.FC<props> = ({ items, setCurrentParent }) => {
     
   };
 
+
+  const deleteParent = (id:any) => {
+    console.log(id,"id")
+    
+    deleteParentById(id).then((res) =>{
+      console.log(res.data)
+      window.location.reload();
+    })
+  }
+
   const img="https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph"
 
   return (
@@ -66,7 +77,7 @@ const Parent: React.FC<props> = ({ items, setCurrentParent }) => {
                 <ul className="flex flex-col gap-4">
                   <li onClick={() => handleRowClick(item.cin)} className="py-1">make payment</li>
                   <li className="py-1">update</li>
-                  <li className="py-1"><IonIcon icon={trash}></IonIcon> delete</li>
+                  <li className="py-1" onClick={()=> deleteParent(item.cin)}><IonIcon icon={trash}></IonIcon> delete</li>
                 </ul>
             </div>
           )}
