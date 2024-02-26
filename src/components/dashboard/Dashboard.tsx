@@ -28,7 +28,7 @@ function DashBoard() {
   let url =
     "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?w=740&t=st=1702236437~exp=1702237037~hmac=44b4655423a2cb3bb4fa6f54d3828c164cc373a3d35fec1ad38416641b45421c";
   
-  const [studentData,setStudentData]=useState([])
+  const [studentUnpaied,setStudentUnpaied]=useState<StudentType[]>([])
   const [students,setStudents] = useState<StudentType[]>([])
   const [parents,setParents] = useState<ParentType[]>([])
   useEffect(()=>{
@@ -41,6 +41,12 @@ function DashBoard() {
         setStudents(res.data)
       })
     },[]);
+  
+  useEffect(()=>{
+    setStudentUnpaied(students.filter(student =>
+      student.etatServices.some(etatService => etatService.payer === false)
+    ))
+  },[students])
     
 
   return (
@@ -150,7 +156,7 @@ function DashBoard() {
             <h5>Unpaid Student Intuition</h5>
             <ListWithPagination<StudentType>
               itemsPerPage={3}
-              data={studentData}
+              data={studentUnpaied}
               renderListItem={(student1) => (
                 <ListComponent  data={student1} />
               )}

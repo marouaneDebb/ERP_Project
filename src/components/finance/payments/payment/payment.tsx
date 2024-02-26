@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 interface Payment{
     id:number;
     name:String;
-    dateBegin: String;
-    dateEnd: String;
+    dateBegin: Date;
+    dateEnd: Date;
     childName:String;
     price: number;
     type: String;
@@ -20,7 +20,7 @@ interface props {
 }
 
 const ShowPayment: React.FC <props>= ({ payment,updateList,allChecked,selectedPayment,setallChecked}) => {
-  const [isChecked, setIsChecked] = useState<boolean>(payment.type === "Obligatory");
+  const [isChecked, setIsChecked] = useState<boolean>(payment.type === "OBLIGATORY");
 
 
 
@@ -60,12 +60,12 @@ const ShowPayment: React.FC <props>= ({ payment,updateList,allChecked,selectedPa
             <IonRow>
                 <IonCol><input type="checkbox"
                     checked={isChecked||allChecked}
-                    disabled={payment.type === "Obligatory"}
+                    disabled={payment.type === "OBLIGATORY"}
                     onChange={handleCheckboxChange}
                 /></IonCol>
                 <IonCol>{payment.name} {allChecked}</IonCol>
-                <IonCol className="subTitle">{payment.dateBegin}</IonCol>
-                <IonCol className="subTitle">{payment.dateEnd}</IonCol>
+                <IonCol className="subTitle">{payment.dateBegin.toString()}</IonCol>
+                <IonCol className="subTitle">{payment.dateEnd.toString()}</IonCol>
                 <IonCol>{payment.childName}</IonCol>
                 <IonCol>{payment.price}</IonCol>
                 <IonCol>{payment.type}</IonCol>

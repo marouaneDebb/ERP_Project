@@ -24,29 +24,10 @@ interface PayementType{
 const ParentDetails: React.FC<props>=({parent})=>{
     const [items, setItems]=useState<StudentType[]>([]);
     const [currentStudent, setCurrentStudent]=useState<StudentType>();
-    /*let items = [
-        {
-          id:1,
-          firstname: "marouane",
-          lastname: "debbagh",
-          img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-        },
-        {
-          id:2,
-          firstname: "marouane",
-          lastname: "debbagh",
-          img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-        },
-        {
-          id:3,
-          firstname: "marouane",
-          lastname: "debbagh",
-          img: "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396&semt=sph",
-        }];*/
+   
     useEffect(()=>{
         getStudentsByParentId(parent.cin).then((rest)=>{
             setItems(rest.data);
-            console.log(rest,"stuParById")
           })
     },[])
 

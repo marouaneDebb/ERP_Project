@@ -5,59 +5,47 @@ import SideMenu from "../sidemenu/sidemenu";
 import Notification_setting from "../notification_setting";
 import ListWithPagination from "../page/pages";
 import ServiceItem from "../service/ServiceItems/serviceItem";
-import { server } from "ionicons/icons";
+import { getAllServices } from "../../Services/ServiceService";
+import StudentType from "../../Models/studentType";
+import { getStudentById } from "../../Services/StrudentService";
 
 
 function ServiceToStudent(){
-    const toChoose=[
-        {
-          name: "Product 1",
-          start: new Date("2024-02-12"),
-          description: "Description of Product 1",
-          preodicity: 1,
-          price: 100,
-          type: "Optional",
-          discount: []
-        },
-        {
-          name: "Product 2",
-          start: new Date("2024-02-13"),
-          description: "Description of Product 2",
-          preodicity: 2,
-          price: 200,
-          type: "Optional",
-          discount: []
-        },
-        {
-          name: "Product 3",
-          start: new Date("2024-02-12"),
-          description: "Description of Product 3",
-          preodicity: 1,
-          price: 100,
-          type: "Optional",
-          discount: []
-        },
-        {
-          name: "Product 4",
-          start: new Date("2024-02-13"),
-          description: "Description of Product 4",
-          preodicity: 2,
-          price: 200,
-          type: "Optional",
-          discount: []
-        }
-      ];
-
-
+    const [allServices,setServices]=useState<ServiceType[]>([])
+    const [toChoose,setToChoose]=useState<ServiceType[]>(allServices)
     const [allChecked, setallChecked] = useState(false);
     const [selectedService,setSelectedService] = useState<ServiceType[]>([]);
-    const [isCheckedDictionary, setIsCheckedDictionary]= useState<{ [key: string]:boolean }>({})
-  
+    const [isCheckedDictionary, setIsCheckedDictionary]= useState<{ [key: string]:boolean }>({});
+    const [currentStudent,setCurrentStudent]=useState<StudentType>();
+    const [studentId, setStudentId] = useState<number>();
+    const getQueryParams = () => {
+      const searchParams = new URLSearchParams(window.location.search);
+      return searchParams.get('studentId');
+    };
+    useEffect(()=>{
+      getAllServices().then((res) =>{
+        setServices(res.data)
+      })
+      const queryParamsValue = getQueryParams();
+      if (queryParamsValue !== null) {
+        setStudentId(parseInt(queryParamsValue, 10));
+      }
+      getStudentById(studentId).then((rest)=>{
+        setCurrentStudent(rest.data);
+      })
+      console.log(studentId);
+    },[])
+
+  //khasss nhyd services lli deja assigner l student mn toChoose
+
+    useEffect(()=>{
+      setToChoose(allServices.filter(s=>s.type==="OPTIONAL"));
+    },[allServices])
+
     useEffect(() => {
       if(selectedService.length===toChoose.length){
         setallChecked(true)
       }
-      console.log(selectedService)
     }, [selectedService]);
   
       const selectAll=()=>{
@@ -141,18 +129,14 @@ function ServiceToStudent(){
                             </div>
                         </IonRow>
                         <ListWithPagination<ServiceType>
-                              itemsPerPage={4}
+                              itemsPerPage={3}
                               data={toChoose}
                               renderListItem={(service) => (
                                 <IonRow className="row">
                                     <div className="col-1 pt-5"><input type="checkbox" onChange={()=>handleCheckboxChange(service)} checked={isCheckedDictionary[service.name]||allChecked}/></div>
                                     <div className="col-11">
                                     <ServiceItem
-                                      //allChecked={allChecked}
-                                      //setallChecked={setallChecked}
                                       item={service}
-                                      //updateList={setSelectedService}
-                                      //selectedService={selectedService}
                                     /></div>
                                   </IonRow>
                               )}

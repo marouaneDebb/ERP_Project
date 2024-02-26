@@ -2,7 +2,6 @@ import { IonCol, IonFab, IonFabButton, IonIcon, IonRow } from "@ionic/react";
 import ServiceItem from "../../service/ServiceItems/serviceItem";
 import StudentType from "../../../Models/studentType";
 import { add } from "ionicons/icons";
-import { useEffect } from "react";
 
 
 interface props{
@@ -10,46 +9,6 @@ interface props{
 }
 
 const StudentDetails: React.FC<props>=({student})=>{  
-    
-    
-    const items=[
-        {
-          name: "Product 1",
-          start: new Date("2024-02-12"),
-          description: "Description of Product 1",
-          preodicity: 1,
-          price: 100,
-          type: "Optional",
-          discount: []
-        },
-        {
-          name: "Product 2",
-          start: new Date("2024-02-13"),
-          description: "Description of Product 2",
-          preodicity: 2,
-          price: 200,
-          type: "Optional",
-          discount: []
-        },
-        {
-          name: "Product 3",
-          start: new Date("2024-01-12"),
-          description: "Description of Product 3",
-          preodicity: 1,
-          price: 100,
-          type: "Obligatory",
-          discount: []
-        },
-        {
-          name: "Product 4",
-          start: new Date("2024-01-13"),
-          description: "Description of Product 4",
-          preodicity: 2,
-          price: 200,
-          type: "Optional",
-          discount: []
-        },
-      ];
 
    return(
       <div className="medSection1">
@@ -96,7 +55,7 @@ const StudentDetails: React.FC<props>=({student})=>{
                     </IonCol>
                     <IonCol className="button-container">
                         <IonFab >
-                            <IonFabButton className="newServiceButton" href="/ERP_Project/student/asignSrevice" >
+                            <IonFabButton className="newServiceButton" href={`/ERP_Project/student/asignSrevice?studentId=${student.id}`}>
                                 <IonIcon icon={add}></IonIcon>
                             </IonFabButton>
                         </IonFab>

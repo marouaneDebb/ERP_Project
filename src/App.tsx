@@ -23,8 +23,6 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import Homet from './components/home/homet';
-import LogIn from './components/login/LogIn';
-import Account from './components/login/ActivateAccount';
 import { IonReactRouter } from '@ionic/react-router';
 import DashBoard from './components/dashboard/Dashboard';
 import Finance from './components/finance/finance';
@@ -55,7 +53,7 @@ function App(){
               <Route path="/ERP_Project/service" component={Service} exact/>
               <Route path="/ERP_Project/service1" component={ServiceItem} exact/>
               <Route path="/ERP_Project/students" component={Students} exact/>
-              <Route path="/ERP_Project/pay" component={Payments} exact/>
+              <Route path="/ERP_Project/pay/:parentId" component={Payments} exact/>
               <Route path="/ERP_Project/pay/online" component={Main} exact/>
               <Route path="/ERP_Project/student/asignSrevice" component={ServiceToStudent} exact/>
 
