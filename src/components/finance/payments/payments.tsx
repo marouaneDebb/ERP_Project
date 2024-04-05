@@ -51,7 +51,7 @@ function Payments(){
   useEffect(() => {
     updatePrice();
     if(selectedPayment.length===toPay.length){
-      setallChecked(true)
+      setallChecked(true);
     }
   }, [selectedPayment]);
 
@@ -68,7 +68,7 @@ function Payments(){
           price:etatService.service.price,
           type:etatService.service.type,
           id:id+1})
-
+          
         }
   })
     )
