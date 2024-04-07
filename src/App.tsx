@@ -30,6 +30,9 @@ import Parents from './components/parents/parents';
 import Service from './components/service/service';
 import ServiceItem from './components/service/ServiceItems/serviceItem';
 import Login from './components/login/loginV2';
+import Login2 from './components/auth/login/index';
+import Register from './components/auth/register/index';
+
 import SignUp from './components/login/signUp';
 import NewStudent from './components/newStudent/NewStudent';
 import Payments from './components/finance/payments/payments';
@@ -45,8 +48,10 @@ function App(){
         <IonReactRouter>
             <IonRouterOutlet>
               <Route path="/ERP_Project/" component={Homet} exact/>
-              <Route path="/ERP_Project/signup" component={SignUp} exact/>
-              <Route path="/ERP_Project/logIn" component={Login} exact />
+              <Route path="/ERP_Project/signup2" component={SignUp} exact/>
+              <Route path="/ERP_Project/signup" component={Register} exact/>
+              <Route path="/ERP_Project/logIn2" component={Login} exact />
+              <Route path="/ERP_Project/logIn" component={Login2} exact />
               <Route path="/ERP_Project/dashBoard" component={DashBoard} exact/>
               <Route path="/ERP_Project/finance" component={Finance} exact/>
               <Route path="/ERP_Project/parents" component={Parents} exact/>

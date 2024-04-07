@@ -33,6 +33,7 @@ function Payments(){
   let totalprice=0;
   selectedPayment.forEach(element => {
     totalprice+=element.price;
+    console.log("this is the price " + element.price)
   });
   setPrix(totalprice);
   }
