@@ -44,9 +44,6 @@ function Payments(){
     })
   },[]);
 
-  useEffect(()=>{
-    setSelectedPayment(toPay.filter(payment => payment.type === 'OBLIGATORY'));
-  },[toPay])
 
   useEffect(() => {
     updatePrice();
@@ -55,30 +52,50 @@ function Payments(){
     }
   }, [selectedPayment]);
 
-  useEffect(()=>{
-    const id=0;
-    students.map(student =>
-      student.etatServices.map(etatService => {
-        if(etatService.payer === false){
-          let startDate=etatService.dateInscription
-          toPay.push({childName:student.firstName,
-          dateBegin:startDate,
-          dateEnd:startDate,//.setMonth(startDate.getMonth() + etatService.service.pereodicity),
-          name:etatService.service.name,
-          price:etatService.service.price,
-          type:etatService.service.type,
-          id:id+1})
-          
-        }
-  })
-    )
-  },[students])
+
+  useEffect(() => {
+    const id = 0;
+    students.forEach(student =>
+        student.etatServices.forEach(etatService => {
+            if (etatService.payer === false) {
+                let startDate = etatService.dateInscription;
+                const newObj = {
+                    childName: student.firstName,
+                    dateBegin: startDate,
+                    dateEnd: startDate,
+                    name: etatService.service.name,
+                    price: etatService.service.price,
+                    type: etatService.service.type,
+                    id: id + 1
+                };
+                const exists = toPay.some(payment =>
+                    payment.childName === newObj.childName &&
+                    payment.dateBegin === newObj.dateBegin &&
+                    payment.dateEnd === newObj.dateEnd &&
+                    payment.name === newObj.name &&
+                    payment.price === newObj.price &&
+                    payment.type === newObj.type &&
+                    payment.id === newObj.id
+                );
+
+                if (!exists) {
+                    toPay.push(newObj);
+                }
+            }
+        })
+    );
+
+    setSelectedPayment(toPay.filter(payment => payment.type === 'OBLIGATORY'));
+}, [students]);
+
+
 
     const selectAll=()=>{
       setallChecked(!allChecked);
       if(!allChecked){
        setSelectedPayment(toPay);
       }
+      
       else{
         setSelectedPayment(toPay.filter(payment => payment.type === 'OBLIGATORY'));
       }
@@ -116,6 +133,7 @@ function Payments(){
                           <IonCol>
                             <input type="checkbox"
                                 onChange={selectAll}
+                                disabled={toPay.every(p => p.type === "OBLIGATORY")}
                                 checked={allChecked}
                              /> All
                           </IonCol>
