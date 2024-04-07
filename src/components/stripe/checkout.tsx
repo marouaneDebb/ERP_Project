@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 
 
 function Main(): JSX.Element {
+
+  const [prix, setPrix]=useState<String>(useParams().prix);
   async function handleToken(token: any): Promise<void> {
-    console.log(token);
+    
     try {
       await fetch('http://localhost:8090/stripe/charge', {
         method: 'POST',
@@ -13,7 +16,7 @@ function Main(): JSX.Element {
         },
         body: JSON.stringify({
           description: 'education payment',
-          amount: 400,
+          amount: prix,
           currency: 'USD',
           stripeToken: token.id,
         }),

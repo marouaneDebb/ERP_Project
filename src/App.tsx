@@ -59,7 +59,7 @@ function App(){
               <Route path="/ERP_Project/service1" component={ServiceItem} exact/>
               <Route path="/ERP_Project/students" component={Students} exact/>
               <Route path="/ERP_Project/pay/:parentId" component={Payments} exact/>
-              <Route path="/ERP_Project/pay/online" component={Main} exact/>
+              <Route path="/ERP_Project/pay/online/:prix" component={Main} exact/>
               <Route path="/ERP_Project/student/asignSrevice" component={ServiceToStudent} exact/>
 
             </IonRouterOutlet>

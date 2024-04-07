@@ -21,7 +21,7 @@ interface props {
 const ServiceItem: React.FC <props>= ({ item }) => {
   const img="https://img.freepik.com/free-photo/front-view-smiley-people-holding-rackets_23-2149733032.jpg?size=626&ext=jpg&uid=R23226604&ga=GA1.1.1704353364.1699547396";
   const TotalOrders=166;
-  const intrest=26
+  const intrest=100;
   const [openState, setOpenState] = useState<boolean >(false);
 
   const toggleOpen = () => {
