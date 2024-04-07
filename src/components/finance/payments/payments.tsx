@@ -7,7 +7,7 @@ import "./payments.css"
 import { useEffect, useState } from "react";
 import StudentType from "../../../Models/studentType";
 import { getStudentsByParentId } from "../../../Services/StrudentService";
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 interface Payment{
   id:number;
@@ -103,7 +103,12 @@ function Payments(){
       
     }
    
-    
+    const history = useHistory();
+    const handleClick = () => {
+      
+        history.push(`/ERP_Project/pay/online/${prix}`);
+      
+    };
     
     return(
       <div className="bgroundpayment row">
@@ -161,7 +166,7 @@ function Payments(){
                             />
                         
                         <div className="button-container mt-2">
-                            <IonButton href="/ERP_Project/pay/online" shape="round" className="text_1">
+                            <IonButton onClick={handleClick} shape="round" className="text_1">
                                 Pay
                             </IonButton>
                         </div>

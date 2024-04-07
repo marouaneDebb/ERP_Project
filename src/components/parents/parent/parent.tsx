@@ -30,12 +30,11 @@ const Parent: React.FC<props> = ({ items, setCurrentParent }) => {
   function handlChange(parent: ParentType) {
     setCurrentParent(parent);
   }
+  
   const history = useHistory();
-
   const handleRowClick = (cinParent:String) => {
     
       history.push(`/ERP_Project/pay/${cinParent}`);
-    
     
   };
 
